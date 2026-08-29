@@ -80,6 +80,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -104,12 +106,13 @@ nav {
 .links {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 20px;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #c4c9cf;
+    flex-wrap: wrap;
 }
 
 .links a {
@@ -205,7 +208,7 @@ nav {
 }
 
 .eyebrow::before {
-content: "";
+    content: "";
     width: 38px;
     height: 1px;
     background: var(--gold);
@@ -433,6 +436,7 @@ section {
     font-weight: 800;
     letter-spacing: 3px;
 }
+
 .blue .f-number {
     color: var(--blue);
 }
@@ -669,9 +673,33 @@ footer {
     transform: none;
 }
 
+.mobile-links {
+    display: none;
+}
+
 @media(max-width:900px) {
     .links { display: none; }
-.about-grid, .faction-grid { grid-template-columns: 1fr; }
+    .mobile-links {
+        display: flex;
+        gap: 8px;
+        padding: 10px 0;
+        flex-wrap: wrap;
+    }
+    .mobile-links a {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: #c4c9cf;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        transition: .2s;
+    }
+    .mobile-links a:hover {
+        color: var(--gold);
+        border-color: var(--gold);
+    }
+    .about-grid, .faction-grid { grid-template-columns: 1fr; }
     .features { grid-template-columns: repeat(2,1fr); }
     .class-grid { grid-template-columns: 1fr 1fr; }
     .hero-bottom .wrap { grid-template-columns: 1fr 1fr; }
@@ -704,6 +732,15 @@ footer {
 <span>Victory Zone Raiders</span>
 </a>
 <div class="links">
+<a href="#about">О войне</a>
+<a href="#factions">Фракции</a>
+<a href="#classes">Классы</a>
+<a href="#join">Вступить</a>
+<a href="rules.html">Правила</a>
+<a href="donate.html">Донат</a>
+<a href="privacy.html">Конфиденциальность</a>
+</div>
+<div class="mobile-links">
 <a href="#about">О войне</a>
 <a href="#factions">Фракции</a>
 <a href="#classes">Классы</a>
@@ -965,4 +1002,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 </body>
-</html>
+    </html>
