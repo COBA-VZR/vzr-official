@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090b">
+    <title>Пользовательское созлашение и правила сервера — Victory Zone Raiders</title>
+    <meta name="description" content="Правила сервера Victory Zone Raiders. Обязательны для всех игроков.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Russo+One&display=swap');
+
+        :root {
+            --bg: #070809;
+            --bg2: #0d1014;
+            --panel: rgba(18,22,28,.76);
+            --text: #f4f2ec;
+            --muted: #929aa4;
+            --line: rgba(255,255,255,.11);
+            --gold: #f1bd61;
+            --blue: #4bb7ff;
+            --red: #ff4c4c;
+            --green: #85df93;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Manrope, Arial, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100;
+            opacity: .045;
+            background-image:
+                linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .wrap {
+            width: min(1220px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            font-family: "Russo One", sans-serif;
+            font-weight: 400;
+        }
+
+        .topbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        nav {
+            height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-family: "Russo One";
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
+        .logo-badge {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(241,189,97,.8);
+            color: var(--gold);
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c4c9cf;
+        }
+
+        .links a {
+            transition: .2s;
+        }
+
+        .links a:hover {
+            color: var(--gold);
+        }
+
+        .live {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #b7bdc5;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 18px var(--green);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(.65);
+                opacity: .5;
+            }
+        }
+
+        .hero-rules {
+            position: relative;
+            padding: 160px 0 70px;
+            background:
+                linear-gradient(90deg, rgba(4,5,7,.96) 0%, rgba(4,5,7,.8) 55%, rgba(4,5,7,.9) 100%),
+                linear-gradient(0deg, var(--bg), transparent 30%),
+                #0d1014;
+border-bottom: 1px solid var(--line);
+            overflow: hidden;
+        }
+
+        .hero-rules::after {
+            content: "VZR";
+            position: absolute;
+            right: -20px;
+            bottom: -50px;
+            font-family: "Russo One";
+            font-size: 280px;
+            opacity: .02;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2.6px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 38px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-rules h1 {
+            font-size: clamp(42px, 7vw, 90px);
+            line-height: .9;
+            letter-spacing: -.04em;
+            text-transform: uppercase;
+            margin: 25px 0;
+            max-width: 900px;
+        }
+
+        .hero-rules h1 em {
+            font-style: normal;
+            color: var(--gold);
+        }
+
+        .hero-rules .lead {
+            max-width: 680px;
+            color: #d2d5d9;
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.65;
+        }
+
+        section {
+            position: relative;
+            padding: 90px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-head {
+            max-width: 850px;
+            margin-bottom: 50px;
+        }
+
+        .tag {
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2.8px;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-size: clamp(38px, 6vw, 70px);
+            line-height: .95;
+            letter-spacing: -.04em;
+            text-transform: uppercase;
+            margin: 15px 0 0;
+        }
+
+        .rules-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .side-nav {
+            position: sticky;
+            top: 20px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+        }
+
+        .side-nav h4 {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .side-nav a {
+            display: block;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #b7bdc5;
+            border-left: 2px solid transparent;
+            transition: .25s;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .side-nav a:hover {
+            color: var(--gold);
+            border-left-color: var(--gold);
+            background: rgba(241,189,97,.05);
+            padding-left: 18px;
+        }
+
+        .mobile-nav {
+            display: none;
+            overflow-x: auto;
+            gap: 8px;
+            padding: 10px 0;
+            margin-bottom: 30px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-nav a {
+            flex-shrink: 0;
+            padding: 10px 16px;
+            border: 1px solid var(--line);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: #b7bdc5;
+            transition: .2s;
+            white-space: nowrap;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .rule-block {
+            margin-bottom: 25px;
+            scroll-margin-top: 100px;
+        }
+
+        .rule-card {
+border: 1px solid var(--line);
+            background: var(--panel);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            transition: .25s;
+        }
+
+        .rule-card:hover {
+            border-color: rgba(241,189,97,.4);
+        }
+
+        .rule-card h3 {
+            font-size: 24px;
+            margin-bottom: 18px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rule-card h3 .num {
+            font-size: 13px;
+            background: rgba(241,189,97,.12);
+            padding: 5px 10px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+        }
+
+        .rule-card ul {
+            list-style: none;
+        }
+
+        .rule-card li {
+            position: relative;
+            padding: 10px 0 10px 22px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            color: #c7ccd3;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .rule-card li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-card li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            backdrop-filter: blur(15px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        th {
+            font-family: "Russo One";
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(241,189,97,.04);
+        }
+
+        td {
+            color: #c7ccd3;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 40px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            backdrop-filter: blur(15px);
+            transition: .3s;
+        }
+
+        .social-card:hover {
+            border-color: rgba(241,189,97,.4);
+            transform: translateY(-4px);
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: "Russo One";
+        }
+
+        .social-icon.tg { background: #2AABEE; color: #fff; }
+        .social-icon.max { background: #3B82F6; color: #fff; }
+        .social-icon.yt { background: #FF0000; color: #fff; }
+        .social-icon.rt { background: #1E293B; color: #fff; border: 1px solid #334155; }
+
+        .social-card b {
+            font-size: 15px;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .social-card span {
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .consent {
+            margin-top: 60px;
+            padding: 40px;
+            border: 1px solid rgba(241,189,97,.25);
+            background: rgba(241,189,97,.03);
+            text-align: center;
+        }
+
+        .consent p {
+            max-width: 800px;
+            margin: auto;
+            color: #b9c0c8;
+            line-height: 1.8;
+font-size: 16px;
+        }
+
+        .consent b {
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 38px 0;
+            color: #747c86;
+            font-size: 11px;
+            border-top: 1px solid var(--line);
+        }
+
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 900px) {
+            .links { display: none; }
+            .rules-layout { grid-template-columns: 1fr; }
+            .side-nav { display: none; }
+            .mobile-nav { display: flex; }
+            .social-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .wrap { width: calc(100% - 28px); }
+            section { padding: 70px 0; }
+            .hero-rules { padding: 130px 0 50px; }
+            .social-grid { grid-template-columns: 1fr; }
+            .rule-card { padding: 20px; }
+            .consent { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="wrap">
+            <nav>
+                <a class="logo" href="index.html">
+                    <span class="logo-badge">VZR</span>
+                    <span>Victory Zone Raiders</span>
+                </a>
+                <div class="links">
+                    <a href="index.html">← На главную</a>
+                    <a href="#rules">Правила</a>
+                    <a href="#punish">Наказания</a>
+                </div>
+                <div class="live">
+                    <span class="dot"></span>
+                    RULES / ONLINE
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-rules">
+            <div class="wrap">
+                <div class="eyebrow">Обязательно к изучению</div>
+                <h1>ПРАВИЛА <em>СЕРВЕРА</em></h1>
+                <p class="lead">
+                    Играя на сервере Victory Zone Raiders, пользуясь магазином, Telegram-каналом или Max-каналом,
+                    вы автоматически соглашаетесь со всеми пунктами настоящих правил.
+                </p>
+            </div>
+        </section>
+
+        <section id="rules">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="tag">Нарушение влечёт наказание</div>
+                    <h2 class="title">ПРАВИЛА ПРОЕКТА</h2>
+                </div>
+
+                <div class="mobile-nav">
+                    <a href="#rule1">1. Общие</a>
+                    <a href="#rule2">2. Поведение</a>
+                    <a href="#rule3">3. Игровой процесс</a>
+                    <a href="#rule4">4. Контент</a>
+                    <a href="#rule5">5. Администрация</a>
+                    <a href="#punish">Наказания</a>
+                </div>
+
+                <div class="rules-layout">
+                    <aside class="side-nav">
+                        <h4>Навигация</h4>
+                        <ul>
+                            <li><a href="#rule1">1. Общие положения</a></li>
+                            <li><a href="#rule2">2. Поведение в игре</a></li>
+                            <li><a href="#rule3">3. Игровой процесс</a></li>
+                            <li><a href="#rule4">4. Запрещённый контент</a></li>
+                            <li><a href="#rule5">5. Администрация</a></li>
+                            <li><a href="#punish">Наказания</a></li>
+                        </ul>
+                    </aside>
+
+                    <div>
+                        <div class="rule-block" id="rule1">
+                            <div class="rule-card">
+                                <h3><span class="num">01</span> Общие положения</h3>
+                                <ul>
+                                    <li>1.1. Настоящие правила обязательны для всех игроков и участников Telegram-канала.</li>
+<li>1.2. Администрация имеет право изменять правила в любое время без предварительного уведомления. Актуальная версия всегда доступна на сайте.</li>
+                                    <li>1.3. Игрок несёт полную ответственность за действия, совершённые с его аккаунта.</li>
+                                    <li>1.4. Администрация не обязана доказывать факт нарушения — достаточно внутреннего убеждения, основанного на логах сервера и показаниях системы.</li>
+                                    <li>1.5. Все споры решаются в пользу администрации, если иное не предусмотрено законодательством РФ.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="rule-block" id="rule2">
+                            <div class="rule-card">
+                                <h3><span class="num">02</span> Поведение в игре и чате</h3>
+                                <ul>
+                                    <li>2.1. Уважительное отношение ко всем игрокам и администрации обязательно. Запрещены оскорбления, унижения, провокации, травля и любые формы агрессии.</li>
+                                    <li>2.2. Использование нецензурной лексики нежелательно. При систематическом употреблении мата администрация оставляет за собой право применить меры.</li>
+                                    <li>2.3. Запрещена реклама любых сторонних ресурсов, серверов, услуг без письменного согласия администрации.</li>
+                                    <li>2.4. Запрещено обсуждение политики, религии, а также других тем, способных вызвать межнациональную или религиозную рознь.</li>
+                                    <li>2.5. Запрещены флуд, спам, капс и повторяющиеся сообщения.</li>
+                                    <li>2.6. Запрещено выдавать себя за администратора или модератора.</li>
+                                    <li>2.7. Запрещено использование никнеймов, оскорбляющих других игроков или администрацию, а также содержащих нецензурную лексику.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="rule-block" id="rule3">
+                            <div class="rule-card">
+                                <h3><span class="num">03</span> Игровой процесс и честная игра</h3>
+                                <ul>
+                                    <li>3.1. Запрещено использование читов, багов, эксплойтов, стороннего ПО, макросов и любых скриптов, дающих преимущество над другими игроками.</li>
+                                    <li>3.2. Запрещена командная игра против своей фракции, намеренный слив информации врагу, а также любые действия, нарушающие баланс игры.</li>
+                                    <li>3.3. Запрещено намеренное создание помех своим союзникам (гриферство, поджоги, подрывы, перекрытие проходов).</li>
+                                    <li>3.4. Запрещено использование игровых багов для получения ресурсов, оружия или преимущества.</li>
+                                    <li>3.5. Запрещена продажа игровых предметов за реальную валюту вне донат-системы проекта.</li>
+                                    <li>3.6. Игрок обязан следовать тактическому стилю игры и не мешать командной работе.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="rule-block" id="rule4">
+                            <div class="rule-card">
+                                <h3><span class="num">04</span> Запрещённый контент</h3>
+                                <ul>
+                                    <li>4.1. Категорически запрещены призывы к насилию, экстремизму, терроризму, разжиганию ненависти, а также любые действия, запрещённые Уголовным кодексом РФ.</li>
+<li>4.2. Запрещена пропаганда или демонстрация материалов, содержащих сцены насилия, жестокости, порнографии, а также материалов, оскорбляющих человеческое достоинство.</li>
+                                    <li>4.3. Запрещено распространение личной информации других игроков без их согласия.</li>
+                                    <li>4.4. Запрещено использование ссылок на фишинговые и вредоносные сайты.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="rule-block" id="rule5">
+                            <div class="rule-card">
+                                <h3><span class="num">05</span> Администрация и модерация</h3>
+                                <ul>
+                                    <li>5.1. Администрация имеет право применять любые меры наказания за нарушение правил без предупреждения.</li>
+                                    <li>5.2. Решения администрации являются окончательными и не подлежат обжалованию, если иное не предусмотрено законодательством РФ.</li>
+                                    <li>5.3. Администрация не обязана разъяснять причины блокировки или мута, но может сделать это по своему усмотрению.</li>
+                                    <li>5.4. Любое взаимодействие с администрацией должно проходить в корректной форме. За оскорбление или угрозы администратору наказание ужесточается.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="punish">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="tag">Система наказаний</div>
+                    <h2 class="title">ТАБЛИЦА НАКАЗАНИЙ</h2>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Нарушение</th>
+                                <th>Наказание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Нарушение правил общения, мат</td>
+                                <td>Предупреждение → мут на 1–6 часов</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Оскорбления, провокации, реклама</td>
+                                <td>Мут на 3–12 часов → бан на 1–30 дней</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Читы, баги, стороннее ПО</td>
+                                <td>Бан на 20 часов – 14 дней + мут</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Гриферство, слив информации</td>
+                                <td>Бан на 7–30 дней</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Призывы к насилию, экстремизму</td>
+                                <td>Бан навсегда</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Повторные нарушения</td>
+                                <td>Ужесточение вплоть до перманентного бана</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="social">
+            <div class="wrap">
+                <div class="section-head">
+<div class="tag">Официальные ресурсы</div>
+                    <h2 class="title">МЫ НА СВЯЗИ</h2>
+                </div>
+                <div class="social-grid">
+                    <a class="social-card" href="https://t.me/VictoryZoneRaidersVZRS1bMS" target="_blank">
+                        <div class="social-icon tg">✈</div>
+                        <div>
+                            <b>Telegram</b>
+                            <span>Основной канал</span>
+                        </div>
+                    </a>
+                    <a class="social-card" href="https://max.ru/join/4qWS7aPnJeZy6UwsHLWhOZEiogwNErM_rlcrAump2Vs" target="_blank">
+                        <div class="social-icon max">M</div>
+                        <div>
+                            <b>Max</b>
+                            <span>Канал проекта</span>
+                        </div>
+                    </a>
+                    <a class="social-card" href="https://youtube.com/@sova_vzr?si=CIKmd34FsfxS86E" target="_blank">
+                        <div class="social-icon yt">▶</div>
+                        <div>
+                            <b>YouTube</b>
+                            <span>Видео и стримы</span>
+                        </div>
+                    </a>
+                    <a class="social-card" href="https://rutube.ru/channel/44970692" target="_blank">
+                        <div class="social-icon rt">R</div>
+                        <div>
+                            <b>Rutube</b>
+                            <span>Видеоархив</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding-top:0; border-top:none;">
+            <div class="wrap">
+                <div class="consent">
+                    <p>
+                        <b>ВНИМАНИЕ!</b><br>
+                        Играя на сервере Victory Zone Raiders, пользуясь магазином, Telegram-каналом или Max-каналом,
+                        вы автоматически подтверждаете, что ознакомились с настоящими правилами
+                        и полностью принимаете все их пункты.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap foot">
+            <div>© VICTORY ZONE RAIDERS / VZR</div>
+            <div>MINECRAFT 1.20.1 • SBW • TACZ • GLOBAL CONFLICT</div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var id = a.getAttribute('href');
+                if (id === '#') return;
+                var target = document.querySelector(id);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
