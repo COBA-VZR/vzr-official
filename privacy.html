@@ -81,6 +81,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -105,12 +107,13 @@
         .links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 20px;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #c4c9cf;
+            flex-wrap: wrap;
         }
 
         .links a {
@@ -151,7 +154,7 @@
             background:
                 linear-gradient(90deg, rgba(4,5,7,.96) 0%, rgba(4,5,7,.8) 55%, rgba(4,5,7,.9) 100%),
                 linear-gradient(0deg, var(--bg), transparent 30%),
-#0d1014;
+                #0d1014;
             border-bottom: 1px solid var(--line);
             overflow: hidden;
         }
@@ -312,7 +315,7 @@
         .rule-block {
             margin-bottom: 25px;
             scroll-margin-top: 100px;
-}
+        }
 
         .rule-card {
             border: 1px solid var(--line);
@@ -459,8 +462,32 @@
             flex-wrap: wrap;
         }
 
+        .mobile-links {
+            display: none;
+        }
+
         @media (max-width: 900px) {
             .links { display: none; }
+            .mobile-links {
+                display: flex;
+                gap: 8px;
+                padding: 10px 0;
+                flex-wrap: wrap;
+            }
+            .mobile-links a {
+                font-size: 10px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .5px;
+                color: #c4c9cf;
+                padding: 8px 12px;
+                border: 1px solid var(--line);
+                transition: .2s;
+            }
+            .mobile-links a:hover {
+                color: var(--gold);
+                border-color: var(--gold);
+            }
             .rules-layout { grid-template-columns: 1fr; }
             .side-nav { display: none; }
             .mobile-nav { display: flex; }
@@ -469,7 +496,7 @@
 
         @media (max-width: 600px) {
             .wrap { width: calc(100% - 28px); }
-section { padding: 70px 0; }
+            section { padding: 70px 0; }
             .hero-privacy { padding: 130px 0 50px; }
             .social-grid { grid-template-columns: 1fr; }
             .rule-card { padding: 20px; }
@@ -487,6 +514,12 @@ section { padding: 70px 0; }
                     <span>Victory Zone Raiders</span>
                 </a>
                 <div class="links">
+                    <a href="index.html">← На главную</a>
+                    <a href="#policy">Политика</a>
+                    <a href="#data">Данные</a>
+                    <a href="#rights">Права</a>
+                </div>
+                <div class="mobile-links">
                     <a href="index.html">← На главную</a>
                     <a href="#policy">Политика</a>
                     <a href="#data">Данные</a>
@@ -554,7 +587,7 @@ section { padding: 70px 0; }
                                     <li>1.2. Все вопросы регулируются Федеральным законом № 152-ФЗ «О персональных данных».</li>
                                     <li>1.3. Используя сервер, Telegram-канал или сайт, пользователь даёт согласие на обработку своих персональных данных.</li>
                                     <li>1.4. Администрация вправе вносить изменения в Политику без предварительного уведомления.</li>
-</ul>
+                                </ul>
                             </div>
                         </div>
 
@@ -621,7 +654,7 @@ section { padding: 70px 0; }
                         <div class="rule-block" id="rule7">
                             <div class="rule-card">
                                 <h3><span class="num">07</span> Права пользователей (ст. 14 ФЗ-152)</h3>
-<ul>
+                                <ul>
                                     <li>Запросить информацию об обработке данных.</li>
                                     <li>Потребовать уточнения, блокировки или уничтожения данных.</li>
                                     <li>Отозвать согласие на обработку в любой момент.</li>
@@ -711,7 +744,7 @@ section { padding: 70px 0; }
                 if (id === '#') return;
                 var target = document.querySelector(id);
                 if (target) {
-e.preventDefault();
+                    e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
