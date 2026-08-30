@@ -82,6 +82,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -106,12 +108,13 @@
         .links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 20px;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #c4c9cf;
+            flex-wrap: wrap;
         }
 
         .links a {
@@ -152,7 +155,7 @@
             background:
                 linear-gradient(90deg, rgba(4,5,7,.96) 0%, rgba(4,5,7,.8) 55%, rgba(4,5,7,.9) 100%),
                 linear-gradient(0deg, var(--bg), transparent 30%),
-#0d1014;
+                #0d1014;
             border-bottom: 1px solid var(--line);
             overflow: hidden;
         }
@@ -313,7 +316,7 @@
         .rule-block {
             margin-bottom: 25px;
             scroll-margin-top: 100px;
-}
+        }
 
         .rule-card {
             border: 1px solid var(--line);
@@ -480,7 +483,8 @@
             display: block;
             margin-bottom: 3px;
         }
-.social-card span {
+
+        .social-card span {
             font-size: 11px;
             color: var(--muted);
             text-transform: uppercase;
@@ -521,8 +525,32 @@
             flex-wrap: wrap;
         }
 
+        .mobile-links {
+            display: none;
+        }
+
         @media (max-width: 900px) {
             .links { display: none; }
+            .mobile-links {
+                display: flex;
+                gap: 8px;
+                padding: 10px 0;
+                flex-wrap: wrap;
+            }
+            .mobile-links a {
+                font-size: 10px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .5px;
+                color: #c4c9cf;
+                padding: 8px 12px;
+                border: 1px solid var(--line);
+                transition: .2s;
+            }
+            .mobile-links a:hover {
+                color: var(--gold);
+                border-color: var(--gold);
+            }
             .rules-layout { grid-template-columns: 1fr; }
             .side-nav { display: none; }
             .mobile-nav { display: flex; }
@@ -553,6 +581,11 @@
                     <a href="#conditions">Условия</a>
                     <a href="#returns">Возврат</a>
                 </div>
+                <div class="mobile-links">
+                    <a href="index.html">← На главную</a>
+                    <a href="#conditions">Условия</a>
+                    <a href="#returns">Возврат</a>
+                </div>
                 <div class="live">
                     <span class="dot"></span>
                     DONATE / TERMS
@@ -565,7 +598,7 @@
         <section class="hero-donate">
             <div class="wrap">
                 <div class="eyebrow">Юридический документ / Условия доната</div>
-                <h1>УСЛОВИЯ <em>ДОНАТА</em> И ВОЗВРАТА СРЕДСТВ</h1>
+                <h1>УСЛОВИЯ <em>ДОНАТА</em> И ВОЗВРАТА</h1>
                 <p class="lead">
                     Используя магазин Victory Zone Raiders, вы автоматически соглашаетесь со всеми условиями,
                     изложенными ниже. Пожалуйста, внимательно ознакомьтесь с документом перед совершением покупки.
@@ -577,7 +610,7 @@
             <div class="wrap">
                 <div class="section-head">
                     <div class="tag">Обязательно к изучению</div>
-                    <h2 class="title">УСЛОВИЯ ДОНАТА И ВОЗВРАТА СРЕДСТВ</h2>
+                    <h2 class="title">УСЛОВИЯ ДОНАТА</h2>
                 </div>
 
                 <div class="mobile-nav">
@@ -597,7 +630,7 @@
                             <li><a href="#rule2">2. При блокировке</a></li>
                             <li><a href="#rule3">3. Возврат осуществляется</a></li>
                             <li><a href="#rule4">4. Возврат не осуществляется</a></li>
-<li><a href="#rule5">5. Процедура возврата</a></li>
+                            <li><a href="#rule5">5. Процедура возврата</a></li>
                             <li><a href="#rule6">6. Сроки</a></li>
                         </ul>
                     </aside>
@@ -653,7 +686,7 @@
                                     <li>Товар использован более 2 часов.</li>
                                     <li>Прошло более 7 дней с момента покупки.</li>
                                     <li>Товар передан другому игроку или утерян.</li>
-<li>Товар — цифровой контент с индивидуальными свойствами (скины, ники, уникальные классы) — ст. 26.1 п. 4 ФЗ.</li>
+                                    <li>Товар — цифровой контент с индивидуальными свойствами (скины, ники, уникальные классы) — ст. 26.1 п. 4 ФЗ.</li>
                                 </ul>
                             </div>
                         </div>
@@ -729,7 +762,7 @@
                         <div class="social-icon rt">R</div>
                         <div>
                             <b>Rutube</b>
-<span>Видеоархив</span>
+                            <span>Видеоархив</span>
                         </div>
                     </a>
                 </div>
