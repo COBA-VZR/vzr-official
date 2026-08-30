@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#08090b">
-    <title>Пользовательское созлашение сервера — Victory Zone Raiders</title>
-    <meta name="description" content="Правила сервера Victory Zone Raiders. Обязательны для всех игроков.">
+    <title>Пользовательское соглашение — Victory Zone Raiders</title>
+    <meta name="description" content="Пользовательское соглашение сервера Victory Zone Raiders. Обязательно для всех игроков.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Russo+One&display=swap');
 
@@ -81,6 +81,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -105,12 +107,13 @@
         .links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 20px;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #c4c9cf;
+            flex-wrap: wrap;
         }
 
         .links a {
@@ -152,7 +155,7 @@
                 linear-gradient(90deg, rgba(4,5,7,.96) 0%, rgba(4,5,7,.8) 55%, rgba(4,5,7,.9) 100%),
                 linear-gradient(0deg, var(--bg), transparent 30%),
                 #0d1014;
-border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
             overflow: hidden;
         }
 
@@ -315,7 +318,7 @@ border-bottom: 1px solid var(--line);
         }
 
         .rule-card {
-border: 1px solid var(--line);
+            border: 1px solid var(--line);
             background: var(--panel);
             backdrop-filter: blur(15px);
             padding: 30px;
@@ -473,7 +476,7 @@ border: 1px solid var(--line);
             margin: auto;
             color: #b9c0c8;
             line-height: 1.8;
-font-size: 16px;
+            font-size: 16px;
         }
 
         .consent b {
@@ -494,8 +497,32 @@ font-size: 16px;
             flex-wrap: wrap;
         }
 
+        .mobile-links {
+            display: none;
+        }
+
         @media (max-width: 900px) {
             .links { display: none; }
+            .mobile-links {
+                display: flex;
+                gap: 8px;
+                padding: 10px 0;
+                flex-wrap: wrap;
+            }
+            .mobile-links a {
+                font-size: 10px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .5px;
+                color: #c4c9cf;
+                padding: 8px 12px;
+                border: 1px solid var(--line);
+                transition: .2s;
+            }
+            .mobile-links a:hover {
+                color: var(--gold);
+                border-color: var(--gold);
+            }
             .rules-layout { grid-template-columns: 1fr; }
             .side-nav { display: none; }
             .mobile-nav { display: flex; }
@@ -526,6 +553,11 @@ font-size: 16px;
                     <a href="#rules">Правила</a>
                     <a href="#punish">Наказания</a>
                 </div>
+                <div class="mobile-links">
+                    <a href="index.html">← На главную</a>
+                    <a href="#rules">Правила</a>
+                    <a href="#punish">Наказания</a>
+                </div>
                 <div class="live">
                     <span class="dot"></span>
                     RULES / ONLINE
@@ -538,7 +570,7 @@ font-size: 16px;
         <section class="hero-rules">
             <div class="wrap">
                 <div class="eyebrow">Обязательно к изучению</div>
-                <h1>Пользовательское соглашение <em>СЕРВЕРА</em></h1>
+                <h1>ПОЛЬЗОВАТЕЛЬСКОЕ <em>СОГЛАШЕНИЕ</em></h1>
                 <p class="lead">
                     Играя на сервере Victory Zone Raiders, пользуясь магазином, Telegram-каналом или Max-каналом,
                     вы автоматически соглашаетесь со всеми пунктами настоящего пользовательского соглашения.
@@ -550,7 +582,7 @@ font-size: 16px;
             <div class="wrap">
                 <div class="section-head">
                     <div class="tag">Нарушение влечёт наказание</div>
-                    <h2 class="title">ПРАВИЛА ПРОЕКТА</h2>
+                    <h2 class="title">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</h2>
                 </div>
 
                 <div class="mobile-nav">
@@ -581,7 +613,7 @@ font-size: 16px;
                                 <h3><span class="num">01</span> Общие положения</h3>
                                 <ul>
                                     <li>1.1. Настоящие правила обязательны для всех игроков и участников Telegram-канала.</li>
-<li>1.2. Администрация имеет право изменять правила в любое время без предварительного уведомления. Актуальная версия всегда доступна на сайте.</li>
+                                    <li>1.2. Администрация имеет право изменять правила в любое время без предварительного уведомления. Актуальная версия всегда доступна на сайте.</li>
                                     <li>1.3. Игрок несёт полную ответственность за действия, совершённые с его аккаунта.</li>
                                     <li>1.4. Администрация не обязана доказывать факт нарушения — достаточно внутреннего убеждения, основанного на логах сервера и показаниях системы.</li>
                                     <li>1.5. Все споры решаются в пользу администрации, если иное не предусмотрено законодательством РФ.</li>
@@ -623,7 +655,7 @@ font-size: 16px;
                                 <h3><span class="num">04</span> Запрещённый контент</h3>
                                 <ul>
                                     <li>4.1. Категорически запрещены призывы к насилию, экстремизму, терроризму, разжиганию ненависти, а также любые действия, запрещённые Уголовным кодексом РФ.</li>
-<li>4.2. Запрещена пропаганда или демонстрация материалов, содержащих сцены насилия, жестокости, порнографии, а также материалов, оскорбляющих человеческое достоинство.</li>
+                                    <li>4.2. Запрещена пропаганда или демонстрация материалов, содержащих сцены насилия, жестокости, порнографии, а также материалов, оскорбляющих человеческое достоинство.</li>
                                     <li>4.3. Запрещено распространение личной информации других игроков без их согласия.</li>
                                     <li>4.4. Запрещено использование ссылок на фишинговые и вредоносные сайты.</li>
                                 </ul>
@@ -701,7 +733,7 @@ font-size: 16px;
         <section id="social">
             <div class="wrap">
                 <div class="section-head">
-<div class="tag">Официальные ресурсы</div>
+                    <div class="tag">Официальные ресурсы</div>
                     <h2 class="title">МЫ НА СВЯЗИ</h2>
                 </div>
                 <div class="social-grid">
@@ -743,8 +775,8 @@ font-size: 16px;
                     <p>
                         <b>ВНИМАНИЕ!</b><br>
                         Играя на сервере Victory Zone Raiders, пользуясь магазином, Telegram-каналом или Max-каналом,
-                        вы автоматически подтверждаете, что ознакомились с настоящими правилами
-                        и полностью принимаете все их пункты.
+                        вы автоматически подтверждаете, что ознакомились с настоящим пользовательским соглашением
+                        и полностью принимаете все его пункты.
                     </p>
                 </div>
             </div>
