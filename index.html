@@ -649,6 +649,7 @@ section {
     gap: 14px;
     margin-top: 30px;
     position: relative;
+    z-index: 5;
 }
 
 .social-card {
@@ -660,6 +661,9 @@ section {
     background: var(--panel);
     backdrop-filter: blur(15px);
     transition: .3s;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
 }
 
 .social-card:hover {
@@ -677,6 +681,7 @@ section {
     font-size: 20px;
     font-weight: 800;
     font-family: "Russo One";
+    pointer-events: none;
 }
 
 .social-icon.tg { background: #2AABEE; color: #fff; }
@@ -770,6 +775,11 @@ footer {
     .foot div + div { margin-top: 10px; }
     .button { width: 100%; min-height: 52px; }
     .social-grid { grid-template-columns: 1fr; }
+    .social-card {
+        position: relative;
+        z-index: 20;
+        pointer-events: auto;
+    }
 }
 </style>
 </head>
@@ -1087,4 +1097,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 </body>
-    </html>
+</html>
