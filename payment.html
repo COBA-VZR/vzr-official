@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090b">
+    <title>Оплата прошла успешно — Victory Zone Raiders</title>
+    <meta name="description" content="Платёж принят. Информация о получении доната.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Russo+One&display=swap');
+
+        :root {
+            --bg: #070809;
+            --bg2: #0d1014;
+            --panel: rgba(18,22,28,.76);
+            --text: #f4f2ec;
+            --muted: #929aa4;
+            --line: rgba(255,255,255,.11);
+            --gold: #f1bd61;
+            --blue: #4bb7ff;
+            --red: #ff4c4c;
+            --green: #85df93;
+            --green-bright: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Manrope, Arial, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100;
+            opacity: .045;
+            background-image:
+                linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .wrap {
+            width: min(1220px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            font-family: "Russo One", sans-serif;
+            font-weight: 400;
+        }
+
+        .topbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        nav {
+            height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-family: "Russo One";
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
+        .logo-badge {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(241,189,97,.8);
+            color: var(--gold);
+        }
+
+        .live {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #b7bdc5;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 18px var(--green);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(.65);
+                opacity: .5;
+            }
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 140px 0 60px;
+            position: relative;
+        }
+
+        main::before {
+            content: "VZR";
+            position: absolute;
+            right: -30px;
+            bottom: -50px;
+            font-family: "Russo One";
+            font-size: 320px;
+            opacity: .02;
+            pointer-events: none;
+        }
+
+        .payment-card {
+            width: 100%;
+            max-width: 650px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+backdrop-filter: blur(15px);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .payment-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green-bright), var(--gold), transparent);
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(46,204,113,.1);
+            border: 2px solid var(--green-bright);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 30px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(46,204,113,.2);
+            animation: successPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes successPulse {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(46,204,113,.2);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(46,204,113,.35);
+            }
+        }
+
+        .success-icon svg {
+            width: 44px;
+            height: 44px;
+            stroke: var(--green-bright);
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: drawCheck .8s ease forwards .3s;
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .tag {
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2.8px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 4vw, 46px);
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: -.03em;
+            margin-bottom: 20px;
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--green-bright);
+        }
+
+        .success-text {
+            color: #c7ccd3;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 30px auto;
+            opacity: .6;
+        }
+
+        .warning-box {
+            border: 1px solid rgba(241,189,97,.3);
+            background: rgba(241,189,97,.05);
+            padding: 25px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .warning-box h3 {
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .warning-box h3 span {
+            font-size: 20px;
+        }
+
+        .warning-box p {
+            color: #b7bdc5;
+            font-size: 14px;
+            line-height: 1.75;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-box b {
+            color: var(--text);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 28px;
+            border: 1px solid #2AABEE;
+            background: rgba(42,171,238,.1);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s;
+            cursor: pointer;
+        }
+.support-btn:hover {
+            background: rgba(42,171,238,.2);
+            border-color: #2AABEE;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42,171,238,.15);
+        }
+
+        .support-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #2AABEE;
+            flex-shrink: 0;
+        }
+
+        .shop-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 28px;
+            border: 1px solid var(--gold);
+            background: rgba(241,189,97,.1);
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .shop-btn:hover {
+            background: rgba(241,189,97,.2);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(241,189,97,.15);
+        }
+
+        .shop-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+            flex-shrink: 0;
+        }
+
+        footer {
+            padding: 30px 0;
+            color: #747c86;
+            font-size: 11px;
+            border-top: 1px solid var(--line);
+        }
+
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .wrap {
+                width: calc(100% - 28px);
+            }
+            main {
+                padding: 120px 0 40px;
+            }
+            .payment-card {
+                padding: 30px 20px;
+            }
+            .success-icon {
+                width: 70px;
+                height: 70px;
+            }
+            .success-icon svg {
+                width: 34px;
+                height: 34px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .warning-box {
+                padding: 18px;
+            }
+            .actions {
+                flex-direction: column;
+            }
+            .support-btn,
+            .shop-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="wrap">
+            <nav>
+                <a class="logo" href="#">
+                    <span class="logo-badge">VZR</span>
+                    <span>Victory Zone Raiders</span>
+                </a>
+                <div class="live">
+                    <span class="dot"></span>
+                    PAYMENT / SUCCESS
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrap">
+            <div class="payment-card">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="4 12 10 18 20 6"></polyline>
+                    </svg>
+                </div>
+
+                <div class="tag">Транзакция подтверждена</div>
+                <h1>ОПЛАТА <em>ПРОШЛА</em> УСПЕШНО</h1>
+                <p class="success-text">
+                    Спасибо за поддержку проекта Victory Zone Raiders!
+                    Ваш донат будет обработан и зачислен на аккаунт.
+                </p>
+
+                <div class="divider"></div>
+
+                <div class="warning-box">
+                    <h3>
+                        <span>⏳</span> Срок получения доната
+                    </h3>
+                    <p>
+                        Вы получите донат-услугу в течение <b>2 дней</b> с момента оплаты.
+                    </p>
+                    <p>
+                        Если по истечении указанного срока вы не получили продукт,
+                        обратитесь в поддержку для запроса продукта или возврата средств.
+Для этого потребуется <b>чек об оплате</b> из магазина.
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <a class="support-btn" href="https://t.me/VZRrep" target="_blank">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.15-.04-.22-.02-.09.02-1.61 1.02-4.55 3.01-.43.3-.82.44-1.17.43-.39-.01-1.13-.22-1.68-.4-.68-.22-1.22-.34-1.17-.71.02-.2.3-.4.82-.61 3.22-1.4 5.37-2.32 6.45-2.77 3.07-1.28 3.71-1.5 4.13-1.51.09 0 .29.02.42.12.11.08.14.19.16.27.01.08.03.25.02.39z"/>
+                        </svg>
+                        Поддержка в Telegram
+                    </a>
+
+                    <a class="shop-btn" href="https://vzrshop.mydonate.io" target="_blank">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                        Вернуться к покупкам
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap foot">
+            <div>© VICTORY ZONE RAIDERS / VZR</div>
+            <div>MINECRAFT 1.20.1 • SBW • TACZ • GLOBAL CONFLICT</div>
+        </div>
+    </footer>
+
+</body>
+</html>
