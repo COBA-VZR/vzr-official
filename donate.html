@@ -23,15 +23,8 @@
             --green-bright: #2ecc71;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
         body {
             background: var(--bg);
@@ -54,100 +47,20 @@
             background-size: 48px 48px;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        .wrap { width: min(1220px, calc(100% - 40px)); margin: auto; }
+        h1, h2, h3, h4 { font-family: "Russo One", sans-serif; font-weight: 400; }
 
-        .wrap {
-            width: min(1220px, calc(100% - 40px));
-            margin: auto;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: "Russo One", sans-serif;
-            font-weight: 400;
-        }
-
-        .topbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-        }
-
-        nav {
-            height: 86px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            font-family: "Russo One";
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 15px;
-        }
-
-        .logo-badge {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(241,189,97,.8);
-            color: var(--gold);
-        }
-
-        .links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #c4c9cf;
-            flex-wrap: wrap;
-        }
-
-        .links a {
-            transition: .2s;
-        }
-
-        .links a:hover {
-            color: var(--gold);
-        }
-
-        .live {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            color: #b7bdc5;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--green);
-            box-shadow: 0 0 18px var(--green);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            50% {
-                transform: scale(.65);
-                opacity: .5;
-            }
-        }
+        .topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 10; }
+        nav { height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 13px; font-family: "Russo One"; letter-spacing: 1px; text-transform: uppercase; font-size: 15px; }
+        .logo-badge { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(241,189,97,.8); color: var(--gold); }
+        .links { display: flex; align-items: center; gap: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #c4c9cf; flex-wrap: wrap; }
+        .links a { transition: .2s; }
+        .links a:hover { color: var(--gold); }
+        .live { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #b7bdc5; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 18px var(--green); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 50% { transform: scale(.65); opacity: .5; } }
 
         .hero-donate {
             position: relative;
@@ -159,7 +72,6 @@
             border-bottom: 1px solid var(--line);
             overflow: hidden;
         }
-
         .hero-donate::after {
             content: "VZR";
             position: absolute;
@@ -169,399 +81,93 @@
             font-size: 280px;
             opacity: .02;
         }
+        .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: 2.6px; text-transform: uppercase; }
+        .eyebrow::before { content: ""; width: 38px; height: 1px; background: var(--gold); }
+        .hero-donate h1 { font-size: clamp(42px, 7vw, 90px); line-height: .9; letter-spacing: -.04em; text-transform: uppercase; margin: 25px 0; max-width: 900px; }
+        .hero-donate h1 em { font-style: normal; color: var(--gold); }
+        .hero-donate .lead { max-width: 680px; color: #d2d5d9; font-size: clamp(16px, 2vw, 20px); line-height: 1.65; }
 
-        .eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--gold);
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 2.6px;
-            text-transform: uppercase;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 38px;
-            height: 1px;
-            background: var(--gold);
-        }
-
-        .hero-donate h1 {
-            font-size: clamp(42px, 7vw, 90px);
-            line-height: .9;
-            letter-spacing: -.04em;
-            text-transform: uppercase;
-            margin: 25px 0;
-            max-width: 900px;
-        }
-
-        .hero-donate h1 em {
-            font-style: normal;
-            color: var(--gold);
-        }
-
-        .hero-donate .lead {
-            max-width: 680px;
-            color: #d2d5d9;
-            font-size: clamp(16px, 2vw, 20px);
-            line-height: 1.65;
-        }
-
-        section {
-            position: relative;
-            padding: 90px 0;
-            border-top: 1px solid var(--line);
-        }
-
-        .section-head {
-            max-width: 850px;
-            margin-bottom: 50px;
-        }
-
-        .tag {
-            color: var(--gold);
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 2.8px;
-            text-transform: uppercase;
-        }
-
-        .title {
-            font-size: clamp(38px, 6vw, 70px);
-            line-height: .95;
-            letter-spacing: -.04em;
-            text-transform: uppercase;
-            margin: 15px 0 0;
-        }
-
-        .rules-layout {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-
-        .side-nav {
-            position: sticky;
-            top: 20px;
-            border: 1px solid var(--line);
-            background: var(--panel);
-            backdrop-filter: blur(15px);
-            padding: 20px;
-        }
-
-        .side-nav h4 {
-            font-size: 14px;
-            color: var(--gold);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .side-nav ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .side-nav a {
-            display: block;
-            padding: 10px 14px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #b7bdc5;
-            border-left: 2px solid transparent;
-            transition: .25s;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-        }
-
-        .side-nav a:hover {
-            color: var(--gold);
-            border-left-color: var(--gold);
+        .notice-box {
+            margin-top: 30px;
+            padding: 20px 25px;
+            border: 1px solid rgba(241,189,97,.3);
             background: rgba(241,189,97,.05);
-            padding-left: 18px;
+            max-width: 680px;
         }
+        .notice-box p { color: #d2d5d9; font-size: 15px; line-height: 1.6; }
+        .notice-box a { color: var(--gold); font-weight: 700; }
+        .notice-box a:hover { text-decoration: underline; }
 
-        .mobile-nav {
-            display: none;
-            overflow-x: auto;
-            gap: 8px;
-            padding: 10px 0;
-            margin-bottom: 30px;
-            -webkit-overflow-scrolling: touch;
-        }
+        section { position: relative; padding: 90px 0; border-top: 1px solid var(--line); }
+        .section-head { max-width: 850px; margin-bottom: 50px; }
+        .tag { color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 2.8px; text-transform: uppercase; }
+        .title { font-size: clamp(38px, 6vw, 70px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin: 15px 0 0; }
 
-        .mobile-nav a {
-            flex-shrink: 0;
-            padding: 10px 16px;
-            border: 1px solid var(--line);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-            color: #b7bdc5;
-            transition: .2s;
-            white-space: nowrap;
-        }
+        .rules-layout { display: grid; grid-template-columns: 280px 1fr; gap: 30px; align-items: start; }
+        .side-nav { position: sticky; top: 20px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(15px); padding: 20px; }
+        .side-nav h4 { font-size: 14px; color: var(--gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .side-nav ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .side-nav a { display: block; padding: 10px 14px; font-size: 13px; font-weight: 600; color: #b7bdc5; border-left: 2px solid transparent; transition: .25s; text-transform: uppercase; letter-spacing: .5px; }
+        .side-nav a:hover { color: var(--gold); border-left-color: var(--gold); background: rgba(241,189,97,.05); padding-left: 18px; }
 
-        .mobile-nav a:hover {
-            color: var(--gold);
-            border-color: var(--gold);
-        }
+        .mobile-nav { display: none; overflow-x: auto; gap: 8px; padding: 10px 0; margin-bottom: 30px; -webkit-overflow-scrolling: touch; }
+        .mobile-nav a { flex-shrink: 0; padding: 10px 16px; border: 1px solid var(--line); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #b7bdc5; transition: .2s; white-space: nowrap; }
+        .mobile-nav a:hover { color: var(--gold); border-color: var(--gold); }
 
-        .rule-block {
-            margin-bottom: 25px;
-            scroll-margin-top: 100px;
-        }
+        .rule-block { margin-bottom: 25px; scroll-margin-top: 100px; }
+        .rule-card { border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(15px); padding: 30px; transition: .25s; }
+        .rule-card:hover { border-color: rgba(241,189,97,.4); }
+        .rule-card h3 { font-size: 24px; margin-bottom: 18px; color: var(--gold); display: flex; align-items: center; gap: 12px; }
+        .rule-card h3 .num { font-size: 13px; background: rgba(241,189,97,.12); padding: 5px 10px; border-radius: 3px; letter-spacing: 1px; }
+        .rule-card ul { list-style: none; }
+        .rule-card li { position: relative; padding: 10px 0 10px 22px; border-bottom: 1px solid rgba(255,255,255,.06); color: #c7ccd3; font-size: 14px; line-height: 1.65; }
+        .rule-card li:last-child { border-bottom: none; }
+        .rule-card li::before { content: "—"; position: absolute; left: 0; color: var(--gold); opacity: .8; }
+        .rule-card li b { color: var(--text); }
+        .rule-card li ul { margin-top: 8px; padding-left: 20px; }
+        .rule-card li ul li { border-bottom: none; padding: 5px 0 5px 15px; font-size: 13px; }
+        .rule-card li ul li::before { color: var(--gold); opacity: .5; }
+        .rule-card li a { color: var(--gold); font-weight: 700; }
+        .rule-card li a:hover { text-decoration: underline; }
 
-        .rule-card {
-            border: 1px solid var(--line);
-            background: var(--panel);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            transition: .25s;
-        }
+        .return-yes { border-left: 3px solid var(--green-bright); }
+        .return-no { border-left: 3px solid var(--red); }
+        .return-yes h3 { color: var(--green-bright); }
+        .return-no h3 { color: var(--red); }
+        .return-yes li::before { color: var(--green-bright); }
+        .return-no li::before { color: var(--red); }
 
-        .rule-card:hover {
-            border-color: rgba(241,189,97,.4);
-        }
+        .steps { display: flex; flex-direction: column; gap: 12px; }
+        .step { display: flex; align-items: flex-start; gap: 16px; padding: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+        .step-num { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font-family: "Russo One"; font-size: 14px; flex-shrink: 0; }
+        .step p { color: #c7ccd3; font-size: 14px; line-height: 1.6; }
+        .step p b { color: var(--text); }
+        .step p a { color: var(--gold); font-weight: 700; }
+        .step p a:hover { text-decoration: underline; }
 
-        .rule-card h3 {
-            font-size: 24px;
-            margin-bottom: 18px;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .consent { margin-top: 60px; padding: 40px; border: 1px solid rgba(241,189,97,.25); background: rgba(241,189,97,.03); text-align: center; }
+        .consent p { max-width: 800px; margin: auto; color: #b9c0c8; line-height: 1.8; font-size: 16px; }
+        .consent b { color: var(--gold); }
 
-        .rule-card h3 .num {
-            font-size: 13px;
-            background: rgba(241,189,97,.12);
-            padding: 5px 10px;
-            border-radius: 3px;
-            letter-spacing: 1px;
-        }
+        footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid var(--line); }
+        .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-        .rule-card ul {
-            list-style: none;
-        }
-
-        .rule-card li {
-            position: relative;
-            padding: 10px 0 10px 22px;
-            border-bottom: 1px solid rgba(255,255,255,.06);
-            color: #c7ccd3;
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .rule-card li:last-child {
-            border-bottom: none;
-        }
-
-        .rule-card li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            opacity: .8;
-        }
-
-        .rule-card li b {
-            color: var(--text);
-        }
-
-        .return-yes {
-            border-left: 3px solid var(--green-bright);
-        }
-
-        .return-no {
-            border-left: 3px solid var(--red);
-        }
-
-        .return-yes h3 {
-            color: var(--green-bright);
-        }
-
-        .return-no h3 {
-            color: var(--red);
-        }
-
-        .return-yes li::before {
-            color: var(--green-bright);
-        }
-
-        .return-no li::before {
-            color: var(--red);
-        }
-
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 16px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,.02);
-        }
-
-        .step-num {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            display: grid;
-            place-items: center;
-            font-family: "Russo One";
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .step p {
-            color: #c7ccd3;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .step p b {
-            color: var(--text);
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-top: 40px;
-        }
-
-        .social-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 22px;
-            border: 1px solid var(--line);
-            background: var(--panel);
-            backdrop-filter: blur(15px);
-            transition: .3s;
-        }
-
-        .social-card:hover {
-            border-color: rgba(241,189,97,.4);
-            transform: translateY(-4px);
-        }
-
-        .social-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-            font-size: 20px;
-            font-weight: 800;
-            font-family: "Russo One";
-        }
-
-        .social-icon.tg { background: #2AABEE; color: #fff; }
-        .social-icon.max { background: #3B82F6; color: #fff; }
-        .social-icon.yt { background: #FF0000; color: #fff; }
-        .social-icon.rt { background: #1E293B; color: #fff; border: 1px solid #334155; }
-
-        .social-card b {
-            font-size: 15px;
-            display: block;
-            margin-bottom: 3px;
-        }
-
-        .social-card span {
-            font-size: 11px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .consent {
-            margin-top: 60px;
-            padding: 40px;
-            border: 1px solid rgba(241,189,97,.25);
-            background: rgba(241,189,97,.03);
-            text-align: center;
-        }
-
-        .consent p {
-            max-width: 800px;
-            margin: auto;
-            color: #b9c0c8;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        .consent b {
-            color: var(--gold);
-        }
-
-        footer {
-            padding: 38px 0;
-            color: #747c86;
-            font-size: 11px;
-            border-top: 1px solid var(--line);
-        }
-
-        .foot {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .mobile-links {
-            display: none;
-        }
+        .mobile-links { display: none; }
 
         @media (max-width: 900px) {
             .links { display: none; }
-            .mobile-links {
-                display: flex;
-                gap: 8px;
-                padding: 10px 0;
-                flex-wrap: wrap;
-            }
-            .mobile-links a {
-                font-size: 10px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: .5px;
-                color: #c4c9cf;
-                padding: 8px 12px;
-                border: 1px solid var(--line);
-                transition: .2s;
-            }
-            .mobile-links a:hover {
-                color: var(--gold);
-                border-color: var(--gold);
-            }
+            .mobile-links { display: flex; gap: 8px; padding: 10px 0; flex-wrap: wrap; }
+            .mobile-links a { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #c4c9cf; padding: 8px 12px; border: 1px solid var(--line); transition: .2s; }
+            .mobile-links a:hover { color: var(--gold); border-color: var(--gold); }
             .rules-layout { grid-template-columns: 1fr; }
             .side-nav { display: none; }
             .mobile-nav { display: flex; }
-            .social-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 600px) {
             .wrap { width: calc(100% - 28px); }
             section { padding: 70px 0; }
             .hero-donate { padding: 130px 0 50px; }
-            .social-grid { grid-template-columns: 1fr; }
             .rule-card { padding: 20px; }
             .consent { padding: 25px; }
         }
@@ -583,6 +189,8 @@
                 </div>
                 <div class="mobile-links">
                     <a href="index.html">← На главную</a>
+                    <a href="#conditions">Условия</a>
+                    <a href="#returns">Возврат</a>
                 </div>
                 <div class="live">
                     <span class="dot"></span>
@@ -598,9 +206,16 @@
                 <div class="eyebrow">Юридический документ / Условия доната</div>
                 <h1>УСЛОВИЯ <em>ДОНАТА</em> И ВОЗВРАТА</h1>
                 <p class="lead">
-                    Используя магазин Victory Zone Raiders, вы автоматически соглашаетесь со всеми условиями,
-                    изложенными ниже. Пожалуйста, внимательно ознакомьтесь с документом перед совершением покупки.
+                    Используя магазин Victory Zone Raiders, вы автоматически соглашаетесь 
+                    со всеми условиями, изложенными ниже. Пожалуйста, внимательно 
+                    ознакомьтесь с документом перед совершением покупки.
                 </p>
+                <div class="notice-box">
+                    <p>
+                        🛒 <b>Все донатные товары продаются в официальном магазине:</b><br>
+                        <a href="https://vzrshop.mydonate.io" target="_blank">vzrshop.mydonate.io</a>
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -612,12 +227,18 @@
                 </div>
 
                 <div class="mobile-nav">
-                    <a href="#rule1">1. Общие условия</a>
-                    <a href="#rule2">2. При блокировке</a>
-                    <a href="#rule3">3. Возврат осуществляется</a>
-                    <a href="#rule4">4. Возврат не осуществляется</a>
+                    <a href="#rule1">1. Общие</a>
+                    <a href="#rule2">2. При бане</a>
+                    <a href="#rule3">3. Возврат да</a>
+                    <a href="#rule4">4. Возврат нет</a>
                     <a href="#rule5">5. Процедура</a>
                     <a href="#rule6">6. Сроки</a>
+                    <a href="#rule7">7. Ответственность</a>
+                    <a href="#rule8">8. Форс-мажор</a>
+                    <a href="#rule9">9. Цены</a>
+                    <a href="#rule10">10. Мошенничество</a>
+                    <a href="#rule11">11. Удаление</a>
+                    <a href="#rule12">12. Контакты</a>
                 </div>
 
                 <div class="rules-layout">
@@ -630,22 +251,44 @@
                             <li><a href="#rule4">4. Возврат не осуществляется</a></li>
                             <li><a href="#rule5">5. Процедура возврата</a></li>
                             <li><a href="#rule6">6. Сроки</a></li>
+                            <li><a href="#rule7">7. Ответственность</a></li>
+                            <li><a href="#rule8">8. Форс-мажор</a></li>
+                            <li><a href="#rule9">9. Изменение цен</a></li>
+                            <li><a href="#rule10">10. Мошенничество</a></li>
+                            <li><a href="#rule11">11. Удаление аккаунта</a></li>
+                            <li><a href="#rule12">12. Контакты</a></li>
                         </ul>
                     </aside>
 
                     <div>
+                        <!-- РАЗДЕЛ 1 -->
                         <div class="rule-block" id="rule1">
                             <div class="rule-card">
                                 <h3><span class="num">01</span> Общие условия доната</h3>
                                 <ul>
-                                    <li>1.1. Донат — это добровольное пожертвование в поддержку проекта.</li>
-                                    <li>1.2. Донат не является платой за гарантированный доступ к серверу (сервер ивентовый).</li>
+                                    <li>1.1. Донат — это добровольное пожертвование в поддержку проекта. Донат не является обязательным платежом и не даёт права на гарантированный доступ к серверу.</li>
+                                    <li>1.2. Донат не является платой за гарантированный доступ к серверу (сервер ивентовый — работает только во время ивентов).</li>
                                     <li>1.3. Все донатные товары (классы, оружие, скины, пропуска) выдаются автоматически или вручную в течение 5 минут после оплаты.</li>
-                                    <li>1.4. Донатные привилегии действуют только на время активных ивентов.</li>
+                                    <li>1.4. При технических проблемах выдача может занять до 2 дней.</li>
+                                    <li>1.5. Донатные привилегии действуют только на время активных ивентов. Вне ивентов привилегии могут быть недоступны.</li>
+                                    <li>1.6. Совершая покупку, игрок подтверждает, что: ознакомился с условиями доната и возврата; достиг 18 лет или имеет согласие родителей; действует от своего имени; понимает, что донат — добровольное пожертвование; не имеет претензий к администрации.</li>
+                                    <li>1.7. Все донат-товары продаются в официальном магазине: <a href="https://vzrshop.mydonate.io" target="_blank">https://vzrshop.mydonate.io</a></li>
+                                    <li>1.8. Покупка через сторонние сайты не гарантирует выдачу товара. Администрация не несёт ответственности за покупки вне официального магазина.</li>
+                                    <li>1.9. Оплата производится через платёжную систему mydonate.io. Администрация не хранит платёжные данные игроков (номера карт, CVV-коды и т.д.).</li>
+                                    <li>1.10. Внутриигровая валюта GOC не подлежит обмену на реальные деньги. GOC можно получить за победы в ивентах или купить в магазине.</li>
+                                    <li>1.11. Цены на донат-товары указаны в рублях РФ. Оплата производится в рублях.</li>
+                                    <li>1.12. Курс GOC: 1 GOC = 1 рубль.</li>
+                                    <li>1.13. Администрация оставляет за собой право изменять ассортимент товаров без предварительного уведомления.</li>
+                                    <li>1.14. Донат-товары являются цифровым контентом и не подлежат передаче другим игрокам.</li>
+                                    <li>1.15. Донат-товары привязаны к конкретному аккаунту и не могут быть перенесены на другой аккаунт.</li>
+                                    <li>1.16. При удалении аккаунта все донат-товары аннулируются без возврата средств.</li>
+                                    <li>1.17. Администрация не гарантирует бесперебойную работу сервера. Сервер работает в ивентовом режиме.</li>
+                                    <li>1.18. Все покупки являются окончательными, если иное не предусмотрено условиями возврата.</li>
                                 </ul>
                             </div>
                         </div>
 
+                        <!-- РАЗДЕЛ 2 -->
                         <div class="rule-block" id="rule2">
                             <div class="rule-card">
                                 <h3><span class="num">02</span> Действие доната при блокировке (бане)</h3>
@@ -653,117 +296,208 @@
                                     <li>2.1. При бане доступ к донат-привилегиям приостанавливается на срок наказания.</li>
                                     <li>2.2. После снятия бана все привилегии восстанавливаются.</li>
                                     <li>2.3. При нарушении правил игрок лишается права на возврат средств за все ранее купленные донат-товары.</li>
+                                    <li>2.4. При перманентном бане все донат-товары аннулируются без возврата средств.</li>
+                                    <li>2.5. При бане по IP все донат-товары аннулируются без возврата средств.</li>
+                                    <li>2.6. Конфискация доната производится в случаях, предусмотренных правилами проекта.</li>
+                                    <li>2.7. При конфискации доната возврат средств не осуществляется.</li>
+                                    <li>2.8. Администрация не обязана возвращать средства за товары, купленные до бана.</li>
+                                    <li>2.9. Восстановление привилегий после снятия бана производится автоматически.</li>
+                                    <li>2.10. При повторном бане привилегии снова приостанавливаются.</li>
+                                    <li>2.11. Для обжалования бана обращайтесь в поддержку: Telegram — <a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>; Max — <a href="https://max.ru/join/Km9e1lR2FwKz-_ddAbZUSTAR1FkrQSaW0fnYA6Uakcw" target="_blank">ссылка</a>.</li>
                                 </ul>
                             </div>
                         </div>
 
+                        <!-- РАЗДЕЛ 3 -->
                         <div class="rule-block" id="rule3">
                             <div class="rule-card return-yes">
                                 <h3><span class="num">03</span> Когда возврат средств ОСУЩЕСТВЛЯЕТСЯ</h3>
                                 <ul>
-                                    <li>Техническая ошибка — товар не выдан в течение 24 часов.</li>
-                                    <li>Двойной платёж — повторное списание за один товар.</li>
-                                    <li>Ошибка платёжной системы — подтверждена mydonate.io.</li>
-                                    <li>Отказ от товара до использования — при соблюдении условий:
-                                        <ul style="margin-top:8px; padding-left:20px;">
-                                            <li style="border-bottom:none; padding:5px 0 5px 15px; font-size:13px;">Прошло менее 7 календарных дней.</li>
-                                            <li style="border-bottom:none; padding:5px 0 5px 15px; font-size:13px;">Товар использован менее 2 часов (суммарно).</li>
-                                            <li style="border-bottom:none; padding:5px 0 5px 15px; font-size:13px;">Товар не передан другому игроку.</li>
+                                    <li>3.1. Техническая ошибка — товар не выдан в течение 24 часов.</li>
+                                    <li>3.2. Двойной платёж — повторное списание за один товар.</li>
+                                    <li>3.3. Ошибка платёжной системы — подтверждена mydonate.io.</li>
+                                    <li>3.4. Отказ от товара до использования — при соблюдении условий:
+                                        <ul>
+                                            <li>Прошло менее 7 календарных дней.</li>
+                                            <li>Товар использован менее 2 часов (суммарно).</li>
+                                            <li>Товар не передан другому игроку.</li>
                                         </ul>
                                     </li>
+                                    <li>3.5. Невыдача товара — если товар не выдан в течение 2 дней и игрок обратился в поддержку.</li>
+                                    <li>3.6. Ошибочная покупка — если игрок купил товар по ошибке и не использовал его.</li>
+                                    <li>3.7. Технический сбой сервера — если сервер не работал в момент покупки.</li>
+                                    <li>3.8. Возврат осуществляется только по решению администрации техподдержки.</li>
+                                    <li>3.9. Возврат производится на ту же карту/кошелёк, с которого был платёж.</li>
+                                    <li>3.10. Возврат не осуществляется, если игрок нарушил правила проекта.</li>
                                 </ul>
                             </div>
                         </div>
 
+                        <!-- РАЗДЕЛ 4 -->
                         <div class="rule-block" id="rule4">
                             <div class="rule-card return-no">
                                 <h3><span class="num">04</span> Когда возврат НЕ ОСУЩЕСТВЛЯЕТСЯ</h3>
                                 <ul>
-                                    <li>Игрок забанен за нарушение правил.</li>
-                                    <li>Игрок передумал или потерял интерес.</li>
-                                    <li>Товар использован более 2 часов.</li>
-                                    <li>Прошло более 7 дней с момента покупки.</li>
-                                    <li>Товар передан другому игроку или утерян.</li>
-                                    <li>Товар — цифровой контент с индивидуальными свойствами (скины, ники, уникальные классы) — ст. 26.1 п. 4 ФЗ.</li>
-                                    <li><b>Аккаунт удалён</b> — при удалении аккаунта все купленные товары аннулируются, возврат средств невозможен.</li>
+                                    <li>4.1. Игрок забанен за нарушение правил.</li>
+                                    <li>4.2. Игрок передумал или потерял интерес.</li>
+                                    <li>4.3. Товар использован более 2 часов.</li>
+                                    <li>4.4. Прошло более 7 дней с момента покупки.</li>
+                                    <li>4.5. Товар передан другому игроку или утерян.</li>
+                                    <li>4.6. Товар — цифровой контент с индивидуальными свойствами (скины, ники, уникальные классы) — ст. 26.1 п. 4 ФЗ.</li>
+                                    <li>4.7. Аккаунт удалён — при удалении аккаунта все купленные товары аннулируются, возврат средств невозможен.</li>
+                                    <li>4.8. Игрок нарушил правила проекта.</li>
+                                    <li>4.9. Игрок получил товар, но не использовал его по назначению.</li>
+                                    <li>4.10. Игрок приобрёл товар через сторонний сайт (не официальный магазин).</li>
+                                    <li>4.11. Игрок приобрёл товар для другого игрока.</li>
+                                    <li>4.12. Игрок использовал товар в нарушение правил.</li>
+                                    <li>4.13. Товар был конфискован за нарушение правил.</li>
+                                    <li>4.14. Прошло более 30 дней с момента покупки (для любых случаев).</li>
+                                    <li>4.15. Игрок пытался обмануть администрацию (фейковый чек, ложная информация).</li>
+                                    <li>4.16. Игрок совершил чарджбэк (отмену платежа через банк) — перманентный бан + передача данных правоохранительным органам.</li>
                                 </ul>
                             </div>
                         </div>
 
+                        <!-- РАЗДЕЛ 5 -->
                         <div class="rule-block" id="rule5">
                             <div class="rule-card">
                                 <h3><span class="num">05</span> Процедура возврата (4 шага)</h3>
                                 <div class="steps">
                                     <div class="step">
                                         <div class="step-num">1</div>
-                                        <p>Написать в Telegram-поддержку: <b>@VictoryZoneRaiders</b></p>
+                                        <p>Написать в поддержку: <b>Telegram</b> — <a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>; <b>Max</b> — <a href="https://max.ru/join/Km9e1lR2FwKz-_ddAbZUSTAR1FkrQSaW0fnYA6Uakcw" target="_blank">ссылка на канал</a>.</p>
                                     </div>
                                     <div class="step">
                                         <div class="step-num">2</div>
-                                        <p>Указать <b>игровой ник</b></p>
+                                        <p>Указать <b>игровой ник</b>.</p>
                                     </div>
                                     <div class="step">
                                         <div class="step-num">3</div>
-                                        <p>Приложить <b>номер транзакции</b> (чек из mydonate.io)</p>
+                                        <p>Приложить <b>номер транзакции</b> (чек из mydonate.io).</p>
                                     </div>
                                     <div class="step">
                                         <div class="step-num">4</div>
-                                        <p>Указать <b>дату покупки</b> и <b>причину возврата</b></p>
+                                        <p>Указать <b>дату покупки</b> и <b>причину возврата</b>.</p>
                                     </div>
                                 </div>
+                                <ul style="margin-top:20px;">
+                                    <li>5.5. Поддержка рассматривает обращение в течение 3 рабочих дней.</li>
+                                    <li>5.6. Поддержка запрашивает доказательства у наказавшего администратора (при необходимости).</li>
+                                    <li>5.7. Решение по возврату принимает администрация техподдержки.</li>
+                                    <li>5.8. При одобрении возврата — средства возвращаются на ту же карту/кошелёк.</li>
+                                    <li>5.9. При отказе — игроку сообщается причина отказа.</li>
+                                    <li>5.10. Решение по возврату является окончательным и не подлежит обжалованию.</li>
+                                </ul>
                             </div>
                         </div>
 
+                        <!-- РАЗДЕЛ 6 -->
                         <div class="rule-block" id="rule6">
                             <div class="rule-card">
                                 <h3><span class="num">06</span> Сроки</h3>
                                 <ul>
-                                    <li>Рассмотрение заявки: до 10 рабочих дней (ст. 22 ФЗ).</li>
-                                    <li>Возврат денег: в течение 3 рабочих дней после одобрения.</li>
-                                    <li>Средства возвращаются на ту же карту/кошелёк, с которого был платёж.</li>
+                                    <li>6.1. Рассмотрение заявки: до 10 рабочих дней (ст. 22 ФЗ).</li>
+                                    <li>6.2. Возврат денег: в течение 3 рабочих дней после одобрения.</li>
+                                    <li>6.3. Средства возвращаются на ту же карту/кошелёк, с которого был платёж.</li>
+                                    <li>6.4. При технических проблемах срок может быть увеличен до 30 дней.</li>
+                                    <li>6.5. Срок рассмотрения может быть продлён при необходимости дополнительной проверки.</li>
+                                    <li>6.6. Игрок уведомляется о решении в Telegram или Max.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- РАЗДЕЛ 7 -->
+                        <div class="rule-block" id="rule7">
+                            <div class="rule-card">
+                                <h3><span class="num">07</span> Ответственность при покупке</h3>
+                                <ul>
+                                    <li>7.1. Совершая покупку, вы подтверждаете, что: ознакомились с условиями; понимаете, что донат — добровольное пожертвование; действуете от своего имени.</li>
+                                    <li>7.2. Администрация проекта несёт ответственность за: выдачу товара в указанный срок; возврат средств согласно условиям; рассмотрение обращений в поддержку; честную проверку нарушений.</li>
+                                    <li>7.3. Проверку нарушений проводит автор проекта или другой администратор, не участвовавший в конфликте.</li>
+                                    <li>7.4. Администрация проекта НЕ несёт ответственности за: технические сбои хостинга; задержки платежей по вине платёжных систем; ошибки платёжных систем; форс-мажорные обстоятельства.</li>
+                                    <li>7.5. При невыдаче товара в течение 2 дней игрок имеет право обратиться в поддержку: Telegram — <a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>; Max — <a href="https://max.ru/join/Km9e1lR2FwKz-_ddAbZUSTAR1FkrQSaW0fnYA6Uakcw" target="_blank">ссылка</a>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- РАЗДЕЛ 8 -->
+                        <div class="rule-block" id="rule8">
+                            <div class="rule-card">
+                                <h3><span class="num">08</span> Форс-мажор</h3>
+                                <ul>
+                                    <li>8.1. Администрация не несёт ответственности за невыдачу товара по причинам: стихийных бедствий; военных действий; террористических актов; кибератак, DDoS-атак; отключений электроэнергии; проблем с интернетом; решений государственных органов; проблем с хостинг-провайдером; иных обстоятельств, не зависящих от администрации.</li>
+                                    <li>8.2. При наступлении форс-мажора администрация уведомляет игроков в Telegram-канале.</li>
+                                    <li>8.3. Сроки выдачи товара переносятся на время действия форс-мажора.</li>
+                                    <li>8.4. Возврат средств при форс-мажоре не осуществляется.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- РАЗДЕЛ 9 -->
+                        <div class="rule-block" id="rule9">
+                            <div class="rule-card">
+                                <h3><span class="num">09</span> Изменение цен и скидки</h3>
+                                <ul>
+                                    <li>9.1. Администрация вправе изменять цены без предварительного уведомления.</li>
+                                    <li>9.2. Актуальные цены всегда указаны в магазине: <a href="https://vzrshop.mydonate.io" target="_blank">https://vzrshop.mydonate.io</a></li>
+                                    <li>9.3. При возврате товара, купленного БЕЗ скидки, возврат осуществляется по ТЕКУЩЕЙ цене товара на момент возврата (в соответствии с законодательством РФ).</li>
+                                    <li>9.4. Если цена товара выросла после покупки (без скидки) — возврат производится по новой (текущей) цене.</li>
+                                    <li>9.5. Если цена товара снизилась после покупки (без скидки) — возврат производится по текущей (сниженной) цене.</li>
+                                    <li>9.6. При возврате товара, купленного СО скидкой, возврат осуществляется по ЦЕНЕ ПОКУПКИ (со скидкой), а не по текущей цене.</li>
+                                    <li>9.7. Если игрок купил товар по скидке, а затем пытается вернуть его по текущей цене (без скидки) — это расценивается как мошенничество.</li>
+                                    <li>9.8. За попытку мошенничества с возвратом предусмотрено: предупреждение; при повторной попытке — бан на 30 дней; при систематических попытках — перманентный бан.</li>
+                                    <li>9.9. Если товар снят с продажи — возврат производится по последней установленной цене.</li>
+                                    <li>9.10. Возврат по текущей цене применяется только при соблюдении условий возврата (раздел 3).</li>
+                                    <li>9.11. При нарушении условий возврата (раздел 4) — возврат не осуществляется.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- РАЗДЕЛ 10 -->
+                        <div class="rule-block" id="rule10">
+                            <div class="rule-card">
+                                <h3><span class="num">10</span> Мошенничество</h3>
+                                <ul>
+                                    <li>10.1. Попытка мошенничества (чарджбэк, фейковые чеки) влечёт за собой: перманентный бан навсегда; бан по IP; конфискацию доната; передачу данных правоохранительным органам.</li>
+                                    <li>10.2. Все транзакции фиксируются и могут быть предоставлены по запросу.</li>
+                                    <li>10.3. Фейковые чеки — уголовная ответственность по УК РФ.</li>
+                                    <li>10.4. Чарджбэк (отмена платежа через банк) — перманентный бан + передача данных органам.</li>
+                                    <li>10.5. Администрация оставляет за собой право проверять все платежи.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- РАЗДЕЛ 11 -->
+                        <div class="rule-block" id="rule11">
+                            <div class="rule-card">
+                                <h3><span class="num">11</span> Возврат при удалении аккаунта</h3>
+                                <ul>
+                                    <li>11.1. При удалении аккаунта все купленные товары аннулируются.</li>
+                                    <li>11.2. Возврат средств при удалении аккаунта не осуществляется.</li>
+                                    <li>11.3. Игрок предупреждается о потере доната перед удалением аккаунта.</li>
+                                    <li>11.4. После удаления аккаунта восстановление невозможно.</li>
+                                    <li>11.5. При удалении аккаунта по инициативе администрации — возврат также не осуществляется.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- РАЗДЕЛ 12 -->
+                        <div class="rule-block" id="rule12">
+                            <div class="rule-card">
+                                <h3><span class="num">12</span> Контакты</h3>
+                                <ul>
+                                    <li>12.1. По вопросам возврата обращайтесь: <b>Telegram</b> — <a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>; <b>Max</b> — <a href="https://max.ru/join/Km9e1lR2FwKz-_ddAbZUSTAR1FkrQSaW0fnYA6Uakcw" target="_blank">ссылка на канал</a>; <b>Email</b> — vzr-oficial@mail.ru</li>
+                                    <li>12.2. Срок рассмотрения обращений — 3 рабочих дня.</li>
+                                    <li>12.3. При технических проблемах — до 10 рабочих дней.</li>
+                                    <li>12.4. По юридическим вопросам — через официальные каналы связи.</li>
+                                    <li>12.5. Официальный магазин: <a href="https://vzrshop.mydonate.io" target="_blank">https://vzrshop.mydonate.io</a></li>
+                                    <li>12.6. Официальный сайт: <a href="https://vzr-official.fun" target="_blank">https://vzr-official.fun</a></li>
+                                    <li>12.7. Официальный Telegram-канал: <a href="https://t.me/VictoryZoneRaidersVZRS1bMS" target="_blank">https://t.me/VictoryZoneRaidersVZRS1bMS</a></li>
+                                    <li>12.8. Официальный Max-канал: <a href="https://max.ru/join/4qWS7aPnJeZy6UwsHLWhOZEiogwNErM_rlcrAump2Vs" target="_blank">https://max.ru/join/4qWS7aPnJeZy6UwsHLWhOZEiogwNErM_rlcrAump2Vs</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="social">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="tag">Официальные ресурсы</div>
-                    <h2 class="title">МЫ НА СВЯЗИ</h2>
-                </div>
-                <div class="social-grid">
-                    <a class="social-card" href="https://t.me/VictoryZoneRaidersVZRS1bMS" target="_blank">
-                        <div class="social-icon tg">✈</div>
-                        <div>
-                            <b>Telegram</b>
-                            <span>Основной канал</span>
-                        </div>
-                    </a>
-                    <a class="social-card" href="https://max.ru/join/4qWS7aPnJeZy6UwsHLWhOZEiogwNErM_rlcrAump2Vs" target="_blank">
-                        <div class="social-icon max">M</div>
-                        <div>
-                            <b>Max</b>
-                            <span>Канал проекта</span>
-                        </div>
-                    </a>
-                    <a class="social-card" href="https://youtube.com/@sova_vzr?si=CIKmd34FsfxS86E" target="_blank">
-                        <div class="social-icon yt">▶</div>
-                        <div>
-                            <b>YouTube</b>
-                            <span>Видео и стримы</span>
-                        </div>
-                    </a>
-                    <a class="social-card" href="https://rutube.ru/channel/44970692" target="_blank">
-                        <div class="social-icon rt">R</div>
-                        <div>
-                            <b>Rutube</b>
-                            <span>Видеоархив</span>
-                        </div>
-                    </a>
                 </div>
             </div>
         </section>
@@ -803,4 +537,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
