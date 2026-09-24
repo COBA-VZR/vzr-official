@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#08090b">
 <title>Victory Zone Raiders — Minecraft Military Project</title>
-<meta name="description" content="Victory Zone Raiders — военный Minecraft-проект 1.20.1. SBW, TACZ, тактика, голосовой чат и глобальная война.">
+<meta name="description" content="Victory Zone Raiders — военный ивентовый Minecraft-проект 1.20.1. SBW, TACZ, тактика, голосовой чат и глобальная война.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Russo+One&display=swap');
 
@@ -22,21 +22,15 @@
     --green: #85df93;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
     background: var(--bg);
     color: var(--text);
     font-family: Manrope, Arial, sans-serif;
     overflow-x: hidden;
+    position: relative;
 }
 
 body::before {
@@ -52,101 +46,60 @@ body::before {
     background-size: 48px 48px;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+a { text-decoration: none; color: inherit; }
+.wrap { width: min(1220px, calc(100% - 40px)); margin: auto; }
+h1, h2, h3, h4 { font-family: "Russo One", sans-serif; font-weight: 400; }
+
+/* =========================
+   ЧАСТИЦЫ (ОСЕННИЕ ЛИСТЬЯ)
+========================= */
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
 }
 
-.wrap {
-    width: min(1220px, calc(100% - 40px));
-    margin: auto;
-}
-
-h1, h2, h3 {
-    font-family: "Russo One", sans-serif;
-    font-weight: 400;
-}
-
-.topbar {
+.leaf {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+    top: -60px;
+    font-size: 18px;
+    opacity: .55;
+    animation: fall linear infinite;
+    filter: drop-shadow(0 0 4px rgba(241,189,97,.2));
 }
 
-nav {
-    height: 86px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    font-family: "Russo One";
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 15px;
-}
-
-.logo-badge {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(241,189,97,.8);
-    color: var(--gold);
-}
-
-.links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #c4c9cf;
-    flex-wrap: wrap;
-}
-
-.links a {
-    transition: .2s;
-}
-
-.links a:hover {
-    color: var(--gold);
-}
-
-.live {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    color: #b7bdc5;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 18px var(--green);
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    50% {
-        transform: scale(.65);
-        opacity: .5;
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% { opacity: .7; }
+    50% { transform: translateY(50vh) rotate(180deg) translateX(30px); }
+    100% {
+        transform: translateY(110vh) rotate(360deg) translateX(-20px);
+        opacity: 0;
     }
 }
 
+/* =========================
+   HEADER
+========================= */
+.topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 10; }
+nav { height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 13px; font-family: "Russo One"; letter-spacing: 1px; text-transform: uppercase; font-size: 15px; }
+.logo-badge { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(241,189,97,.8); color: var(--gold); }
+.links { display: flex; align-items: center; gap: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #c4c9cf; flex-wrap: wrap; }
+.links a { transition: .2s; }
+.links a:hover { color: var(--gold); }
+.live { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #b7bdc5; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 18px var(--green); animation: pulse 1.5s infinite; }
+@keyframes pulse { 50% { transform: scale(.65); opacity: .5; } }
+
+/* =========================
+   HERO
+========================= */
 .hero {
     min-height: 100vh;
     position: relative;
@@ -169,11 +122,7 @@ nav {
     animation: kenburns 18s ease-in-out infinite alternate;
 }
 
-@keyframes kenburns {
-    to {
-        transform: scale(1.11) translateX(-1%);
-    }
-}
+@keyframes kenburns { to { transform: scale(1.11) translateX(-1%); } }
 
 .glow {
     position: absolute;
@@ -196,24 +145,8 @@ nav {
     opacity: .25;
 }
 
-.eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2.6px;
-    text-transform: uppercase;
-}
-
-.eyebrow::before {
-    content: "";
-    width: 38px;
-    height: 1px;
-    background: var(--gold);
-}
-
+.eyebrow { display: flex; align-items: center; gap: 12px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: 2.6px; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 38px; height: 1px; background: var(--gold); }
 .hero h1 {
     font-size: clamp(66px,10vw,154px);
     line-height: .83;
@@ -222,33 +155,10 @@ nav {
     margin: 24px 0 28px;
     max-width: 1000px;
 }
-
-.hero h1 .small {
-    display: block;
-    font-size: .23em;
-    letter-spacing: .18em;
-    color: #d4d1c9;
-    margin-bottom: 22px;
-}
-
-.hero h1 em {
-    font-style: normal;
-    color: var(--gold);
-}
-
-.hero-desc {
-    max-width: 690px;
-    color: #d2d5d9;
-    font-size: clamp(17px,2vw,22px);
-    line-height: 1.65;
-    margin-bottom: 34px;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
+.hero h1 .small { display: block; font-size: .23em; letter-spacing: .18em; color: #d4d1c9; margin-bottom: 22px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-desc { max-width: 690px; color: #d2d5d9; font-size: clamp(17px,2vw,22px); line-height: 1.65; margin-bottom: 34px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .button {
     display: inline-flex;
@@ -266,150 +176,168 @@ nav {
     transition: .25s;
     cursor: pointer;
 }
+.button:hover { transform: translateY(-3px); border-color: var(--gold); }
+.button.gold { background: var(--gold); border-color: var(--gold); color: #17130d; }
 
-.button:hover {
-    transform: translateY(-3px);
-    border-color: var(--gold);
-}
+.hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; border-top: 1px solid var(--line); background: rgba(5,6,8,.52); backdrop-filter: blur(12px); }
+.hero-bottom .wrap { display: grid; grid-template-columns: repeat(4,1fr); }
+.hud { padding: 21px 25px; border-right: 1px solid var(--line); }
+.hud:first-child { border-left: 1px solid var(--line); }
+.hud b { font-family: "Russo One"; font-size: 18px; }
+.hud span { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase; }
 
-.button.gold {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #17130d;
-}
+/* =========================
+   GENERAL
+========================= */
+section { position: relative; padding: 120px 0; border-top: 1px solid var(--line); }
+.section-head { max-width: 850px; margin-bottom: 60px; }
+.tag { color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 2.8px; text-transform: uppercase; }
+.title { font-size: clamp(42px,7vw,88px); line-height: .93; letter-spacing: -.05em; text-transform: uppercase; margin: 17px 0 0; }
+.lead { max-width: 730px; color: var(--muted); font-size: 18px; line-height: 1.75; margin-top: 28px; }
 
-.hero-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-top: 1px solid var(--line);
-    background: rgba(5,6,8,.52);
-    backdrop-filter: blur(12px);
-}
+/* =========================
+   ABOUT
+========================= */
+.about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; }
+.story { padding: 44px; background: linear-gradient(135deg, rgba(255,255,255,.035), transparent); border: 1px solid var(--line); min-height: 480px; display: flex; flex-direction: column; justify-content: space-between; }
+.story p { max-width: 720px; color: #b9c0c8; line-height: 1.8; font-size: 17px; }
+.system { border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(15px); padding: 35px; }
+.system h3 { font-size: 30px; margin: 12px 0 28px; }
+.system-row { display: flex; justify-content: space-between; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.system-row span { color: var(--muted); }
+.system-row b { color: #f1efe9; text-align: right; }
 
-.hero-bottom .wrap {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-}
-
-.hud {
-    padding: 21px 25px;
-    border-right: 1px solid var(--line);
-}
-
-.hud:first-child {
-    border-left: 1px solid var(--line);
-}
-
-.hud b {
-    font-family: "Russo One";
-    font-size: 18px;
-}
-
-.hud span {
-    display: block;
-    margin-top: 5px;
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-}
-
-section {
-    position: relative;
-    padding: 120px 0;
-    border-top: 1px solid var(--line);
-}
-
-.section-head {
-    max-width: 850px;
-    margin-bottom: 60px;
-}
-
-.tag {
-    color: var(--gold);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2.8px;
-    text-transform: uppercase;
-}
-
-.title {
-    font-size: clamp(42px,7vw,88px);
-    line-height: .93;
-    letter-spacing: -.05em;
-    text-transform: uppercase;
-    margin: 17px 0 0;
-}
-
-.lead {
-    max-width: 730px;
-    color: var(--muted);
-    font-size: 18px;
-    line-height: 1.75;
-    margin-top: 28px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 28px;
-}
-
-.story {
-    padding: 44px;
-    background: linear-gradient(135deg, rgba(255,255,255,.035), transparent);
-    border: 1px solid var(--line);
-    min-height: 480px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.story p {
-    max-width: 720px;
-    color: #b9c0c8;
-    line-height: 1.8;
+/* =========================
+   LORE
+========================= */
+.lore-text {
+    max-width: 900px;
+    margin: 0 auto;
+    color: #c7ccd3;
     font-size: 17px;
+    line-height: 1.9;
+}
+.lore-text p { margin-bottom: 26px; }
+.lore-text p:last-child { margin-bottom: 0; }
+.lore-text b { color: var(--text); }
+.lore-text em { color: var(--gold); font-style: normal; font-weight: 700; }
+.lore-final {
+    margin-top: 40px;
+    padding: 30px;
+    border-left: 3px solid var(--gold);
+    background: rgba(241,189,97,.04);
+    font-size: 18px;
+    color: #d2d5d9;
+    line-height: 1.8;
 }
 
-.system {
+/* =========================
+   MODES
+========================= */
+.mode-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.mode-card {
     border: 1px solid var(--line);
     background: var(--panel);
     backdrop-filter: blur(15px);
-    padding: 35px;
+    padding: 35px 30px;
+    transition: .3s;
+    position: relative;
+    overflow: hidden;
+}
+.mode-card:hover { transform: translateY(-6px); border-color: rgba(241,189,97,.5); }
+.mode-card::before {
+    content: attr(data-num);
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-family: "Russo One";
+    font-size: 80px;
+    opacity: .04;
+    line-height: 1;
+}
+.mode-card h3 { font-size: 24px; margin-bottom: 15px; color: var(--gold); }
+.mode-card p { color: #b7bec7; font-size: 14px; line-height: 1.75; }
+.mode-card .mode-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 12px;
+    border: 1px solid rgba(241,189,97,.35);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
-.system h3 {
-    font-size: 30px;
-    margin: 12px 0 28px;
-}
-
-.system-row {
+/* =========================
+   FAQ / WHAT TO DO
+========================= */
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.faq-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(15px);
+    padding: 25px 28px;
+    transition: .3s;
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line);
-    font-size: 14px;
-}
-
-.system-row span {
-    color: var(--muted);
-}
-
-.system-row b {
-    color: #f1efe9;
-    text-align: right;
-}
-
-.faction-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 18px;
+    align-items: flex-start;
 }
+.faq-card:hover { border-color: rgba(241,189,97,.4); transform: translateX(5px); }
+.faq-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    background: rgba(241,189,97,.05);
+}
+.faq-card b { display: block; color: var(--gold); font-size: 14px; margin-bottom: 6px; font-family: "Russo One"; letter-spacing: .5px; }
+.faq-card p { color: #b7bec7; font-size: 13px; line-height: 1.65; }
+.faq-card p a { color: var(--gold); }
+.faq-card p a:hover { text-decoration: underline; }
 
+/* =========================
+   HOW TO START
+========================= */
+.start-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+.start-step {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(15px);
+    padding: 28px 22px;
+    transition: .3s;
+    position: relative;
+}
+.start-step:hover { transform: translateY(-5px); border-color: rgba(241,189,97,.4); }
+.start-num {
+    font-family: "Russo One";
+    font-size: 36px;
+    color: var(--gold);
+    opacity: .5;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+.start-step h4 { font-size: 15px; color: var(--text); margin-bottom: 12px; letter-spacing: .5px; }
+.start-step p { color: #b7bec7; font-size: 13px; line-height: 1.6; }
+
+.tips-list { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tip {
+    padding: 18px 22px;
+    border-left: 3px solid var(--gold);
+    background: rgba(241,189,97,.03);
+    color: #c7ccd3;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.tip b { color: var(--gold); }
+
+/* =========================
+   FACTIONS
+========================= */
+.faction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .faction {
     min-height: 540px;
     padding: 48px;
@@ -418,55 +346,20 @@ section {
     border: 1px solid var(--line);
     transition: .35s;
 }
+.faction:hover { transform: translateY(-6px); }
+.faction.blue { background: radial-gradient(circle at 80% 20%, rgba(75,183,255,.2), transparent 42%), #0b1118; }
+.faction.red { background: radial-gradient(circle at 20% 20%, rgba(255,76,76,.18), transparent 42%), #160b0d; }
+.f-number { font-size: 10px; font-weight: 800; letter-spacing: 3px; }
+.blue .f-number { color: var(--blue); }
+.red .f-number { color: var(--red); }
+.faction h3 { font-size: clamp(40px,5vw,72px); line-height: .9; margin: 25px 0; }
+.faction p { max-width: 490px; color: #b7bec7; line-height: 1.75; }
+.faction .button { margin-top: 30px; }
 
-.faction:hover {
-    transform: translateY(-6px);
-}
-
-.faction.blue {
-    background: radial-gradient(circle at 80% 20%, rgba(75,183,255,.2), transparent 42%), #0b1118;
-}
-
-.faction.red {
-    background: radial-gradient(circle at 20% 20%, rgba(255,76,76,.18), transparent 42%), #160b0d;
-}
-
-.f-number {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 3px;
-}
-
-.blue .f-number {
-    color: var(--blue);
-}
-
-.red .f-number {
-    color: var(--red);
-}
-
-.faction h3 {
-    font-size: clamp(40px,5vw,72px);
-    line-height: .9;
-    margin: 25px 0;
-}
-
-.faction p {
-    max-width: 490px;
-    color: #b7bec7;
-    line-height: 1.75;
-}
-
-.faction .button {
-    margin-top: 30px;
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 14px;
-}
-
+/* =========================
+   FEATURES
+========================= */
+.features { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
 .feature {
     min-height: 280px;
     padding: 30px;
@@ -474,35 +367,15 @@ section {
     background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
     transition: .3s;
 }
+.feature:hover { background: #12171d; transform: translateY(-5px); }
+.feature-icon { font-family: "Russo One"; font-size: 28px; color: var(--gold); }
+.feature h3 { font-size: 21px; margin: 55px 0 10px; }
+.feature p { color: var(--muted); font-size: 14px; line-height: 1.7; }
 
-.feature:hover {
-    background: #12171d;
-    transform: translateY(-5px);
-}
-
-.feature-icon {
-    font-family: "Russo One";
-    font-size: 28px;
-    color: var(--gold);
-}
-
-.feature h3 {
-    font-size: 21px;
-    margin: 55px 0 10px;
-}
-
-.feature p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.class-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 14px;
-}
-
+/* =========================
+   CLASSES
+========================= */
+.class-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
 .class-card {
     position: relative;
     min-height: 320px;
@@ -512,31 +385,10 @@ section {
     overflow: hidden;
     transition: .3s;
 }
-
-.class-card:hover {
-    transform: translateY(-7px);
-    border-color: rgba(241,189,97,.45);
-}
-
-.class-no {
-    color: var(--gold);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.class-card h3 {
-    font-size: 32px;
-    margin: 24px 0 10px;
-}
-
-.class-card p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.7;
-    max-width: 290px;
-}
-
+.class-card:hover { transform: translateY(-7px); border-color: rgba(241,189,97,.45); }
+.class-no { color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 2px; }
+.class-card h3 { font-size: 32px; margin: 24px 0 10px; }
+.class-card p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 290px; }
 .class-card::after {
     content: attr(data-mark);
     position: absolute;
@@ -548,17 +400,11 @@ section {
     opacity: .025;
 }
 
-.timeline {
-    position: relative;
-    border-left: 1px solid var(--line);
-    margin-left: 18px;
-}
-
-.event {
-    position: relative;
-    padding: 0 0 55px 45px;
-}
-
+/* =========================
+   TIMELINE
+========================= */
+.timeline { position: relative; border-left: 1px solid var(--line); margin-left: 18px; }
+.event { position: relative; padding: 0 0 55px 45px; }
 .event::before {
     content: "";
     position: absolute;
@@ -570,31 +416,18 @@ section {
     background: var(--gold);
     box-shadow: 0 0 20px rgba(241,189,97,.5);
 }
+.event-time { color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 2px; }
+.event h3 { font-size: 25px; margin: 10px 0; }
+.event p { color: var(--muted); line-height: 1.7; max-width: 720px; }
 
-.event-time {
-    color: var(--gold);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.event h3 {
-    font-size: 25px;
-    margin: 10px 0;
-}
-
-.event p {
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 720px;
-}
-
+/* =========================
+   QUOTE
+========================= */
 .quote {
     padding: 160px 0;
     text-align: center;
     background: radial-gradient(circle at center, rgba(241,189,97,.11), transparent 45%);
 }
-
 .quote .big {
     font-family: "Russo One";
     font-size: clamp(42px,7vw,94px);
@@ -604,12 +437,11 @@ section {
     margin: 20px auto;
     text-transform: uppercase;
 }
+.quote em { font-style: normal; color: var(--gold); }
 
-.quote em {
-    font-style: normal;
-    color: var(--gold);
-}
-
+/* =========================
+   JOIN
+========================= */
 .join-panel {
     position: relative;
     padding: 70px;
@@ -617,7 +449,6 @@ section {
     border: 1px solid var(--line);
     background: linear-gradient(110deg, #151a20, #08090b);
 }
-
 .join-panel::after {
     content: "VZR";
     position: absolute;
@@ -627,7 +458,6 @@ section {
     font-size: 260px;
     opacity: .025;
 }
-
 .join-panel h2 {
     position: relative;
     font-size: clamp(40px,7vw,82px);
@@ -635,13 +465,7 @@ section {
     margin: 16px 0 30px;
     letter-spacing: -.05em;
 }
-
-.join-panel p {
-    position: relative;
-    max-width: 680px;
-    color: var(--muted);
-    line-height: 1.7;
-}
+.join-panel p { position: relative; max-width: 680px; color: var(--muted); line-height: 1.7; }
 
 .social-grid {
     display: grid;
@@ -649,9 +473,7 @@ section {
     gap: 14px;
     margin-top: 30px;
     position: relative;
-    z-index: 5;
 }
-
 .social-card {
     display: flex;
     align-items: center;
@@ -662,15 +484,8 @@ section {
     backdrop-filter: blur(15px);
     transition: .3s;
     cursor: pointer;
-    position: relative;
-    z-index: 5;
 }
-
-.social-card:hover {
-    border-color: rgba(241,189,97,.4);
-    transform: translateY(-4px);
-}
-
+.social-card:hover { border-color: rgba(241,189,97,.4); transform: translateY(-4px); }
 .social-icon {
     width: 44px;
     height: 44px;
@@ -683,81 +498,78 @@ section {
     font-family: "Russo One";
     pointer-events: none;
 }
-
 .social-icon.tg { background: #2AABEE; color: #fff; }
 .social-icon.max { background: #3B82F6; color: #fff; }
 .social-icon.yt { background: #FF0000; color: #fff; }
 .social-icon.rt { background: #1E293B; color: #fff; border: 1px solid #334155; }
+.social-card b { font-size: 15px; display: block; margin-bottom: 3px; }
+.social-card span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
 
-.social-card b {
-    font-size: 15px;
-    display: block;
-    margin-bottom: 3px;
+/* =========================
+   SPARKS (ФИНАЛ)
+========================= */
+.sparks {
+    position: relative;
+    padding: 120px 0 60px;
+    text-align: center;
+    overflow: hidden;
+}
+.sparks::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 200px;
+    background: radial-gradient(ellipse at bottom, rgba(241,189,97,.15), transparent 70%);
+    pointer-events: none;
+}
+.spark {
+    position: absolute;
+    bottom: -20px;
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(241,189,97,.5);
+    animation: sparkRise linear infinite;
+}
+@keyframes sparkRise {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-300px) scale(.3); opacity: 0; }
 }
 
-.social-card span {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+/* =========================
+   FOOTER
+========================= */
+footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid var(--line); }
+.foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-footer {
-    padding: 38px 0;
-    color: #747c86;
-    font-size: 11px;
-    border-top: 1px solid var(--line);
-}
+/* =========================
+   REVEAL
+========================= */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.show { opacity: 1; transform: none; }
 
-.foot {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.show {
-    opacity: 1;
-    transform: none;
-}
-
-.mobile-links {
-    display: none;
-}
+.mobile-links { display: none; }
 
 @media(max-width:900px) {
     .links { display: none; }
-    .mobile-links {
-        display: flex;
-        gap: 8px;
-        padding: 10px 0;
-        flex-wrap: wrap;
-    }
-    .mobile-links a {
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: .5px;
-        color: #c4c9cf;
-        padding: 8px 12px;
-        border: 1px solid var(--line);
-        transition: .2s;
-    }
-    .mobile-links a:hover {
-        color: var(--gold);
-        border-color: var(--gold);
-    }
+    .mobile-links { display: flex; gap: 8px; padding: 10px 0; flex-wrap: wrap; }
+    .mobile-links a { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #c4c9cf; padding: 8px 12px; border: 1px solid var(--line); transition: .2s; }
+    .mobile-links a:hover { color: var(--gold); border-color: var(--gold); }
     .about-grid, .faction-grid { grid-template-columns: 1fr; }
     .features { grid-template-columns: repeat(2,1fr); }
     .class-grid { grid-template-columns: 1fr 1fr; }
     .hero-bottom .wrap { grid-template-columns: 1fr 1fr; }
     .social-grid { grid-template-columns: 1fr 1fr; }
+    .mode-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .start-grid { grid-template-columns: repeat(2,1fr); }
+    .tips-list { grid-template-columns: 1fr; }
 }
 
 @media(max-width:600px) {
@@ -775,15 +587,14 @@ footer {
     .foot div + div { margin-top: 10px; }
     .button { width: 100%; min-height: 52px; }
     .social-grid { grid-template-columns: 1fr; }
-    .social-card {
-        position: relative;
-        z-index: 20;
-        pointer-events: auto;
-    }
+    .start-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
+
+<!-- ЧАСТИЦЫ ЛИСТЬЕВ -->
+<div id="particles"></div>
 
 <div class="topbar">
 <div class="wrap">
@@ -794,21 +605,19 @@ footer {
 </a>
 <div class="links">
 <a href="#about">О войне</a>
+<a href="#lore">Лор</a>
+<a href="#modes">Режимы</a>
+<a href="#start">Как начать</a>
 <a href="#factions">Фракции</a>
-<a href="#classes">Классы</a>
+<a href="#faq">Помощь</a>
 <a href="#join">Вступить</a>
-<a href="rules.html">Правила</a>
-<a href="donate.html">Донат</a>
-<a href="privacy.html">Конфиденциальность</a>
 </div>
 <div class="mobile-links">
 <a href="#about">О войне</a>
-<a href="#factions">Фракции</a>
-<a href="#classes">Классы</a>
-<a href="#join">Вступить</a>
-<a href="rules.html">Правила</a>
-<a href="donate.html">Донат</a>
-<a href="privacy.html">Конфиденциальность</a>
+<a href="#lore">Лор</a>
+<a href="#modes">Режимы</a>
+<a href="#start">Как начать</a>
+<a href="#faq">Помощь</a>
 </div>
 <div class="live">
 <span class="dot"></span>
@@ -820,6 +629,7 @@ PROJECT ONLINE
 
 <main>
 
+<!-- HERO -->
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="glow"></div>
@@ -837,7 +647,7 @@ PROJECT ONLINE
 </p>
 <div class="hero-actions">
 <a class="button gold" href="#factions">Выбрать сторону →</a>
-<a class="button" href="https://youtube.com/@sova_vzr?si=CIKmd34FsfxS86E" target="_blank" rel="noopener">▶ Смотреть YouTube</a>
+<a class="button" href="https://youtube.com/@sova_vzr?si=CIKmd34FsfxS86E" target="_blank">▶ Смотреть YouTube</a>
 </div>
 </div>
 <div class="hero-bottom">
@@ -850,6 +660,7 @@ PROJECT ONLINE
 </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
 <div class="wrap">
 <div class="section-head reveal">
@@ -867,21 +678,127 @@ PROJECT ONLINE
 <div class="tag">Здесь решает не количество. Здесь решает качество.</div>
 </article>
 <aside class="system reveal">
-<div class="tag">Тактическая система</div>
-<h3>ОПЕРАЦИОННЫЙ ПРОТОКОЛ</h3>
-<div class="system-row"><span>Игровая версия</span><b>1.20.1</b></div>
-<div class="system-row"><span>Основной стиль</span><b>Modern Warfare</b></div>
-<div class="system-row"><span>Коммуникация</span><b>Voice Chat</b></div>
-<div class="system-row"><span>Главный принцип</span><b>Тактика &gt; Хаос</b></div>
+<div class="tag">Что такое VZR</div>
+<h3>О ПРОЕКТЕ</h3>
+<div class="system-row"><span>Тип сервера</span><b>Ивентовый с модами</b></div>
+<div class="system-row"><span>Фракции</span><b>Синие и Красные</b></div>
+<div class="system-row"><span>Классов</span><b>34</b></div>
+<div class="system-row"><span>Режимов</span><b>3</b></div>
+<div class="system-row"><span>Связь</span><b>Голосовой чат</b></div>
+<div class="system-row"><span>Стиль</span><b>Тактика &gt; Хаос</b></div>
 </aside>
 </div>
 </div>
 </section>
 
+<!-- LORE -->
+<section id="lore">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="tag">02 / История мира</div>
+<h2 class="title">ЛОР VICTORY ZONE RAIDERS</h2>
+</div>
+<div class="lore-text reveal">
+<p>В 1947 году мир разделился на два лагеря. <b>СССР и США</b>, только что победившие общего врага, начали делить сферы влияния. К ним присоединились <b>Великобритания и Франция</b> — старые империи, не желавшие терять остатки былого могущества. Никто тогда не думал, что этот раздел станет началом конца.</p>
+
+<p>В 1950-х начались тайные операции. Державы меняли режимы в других странах, поддерживали повстанцев и диктаторов, разжигали конфликты там, где их не было. Но однажды они просчитались — восставшие ударили по своим создателям. Гражданские войны вспыхнули в самих США и Европе. После того как восстания подавили, державы заключили пакт: <em>не воевать напрямую</em>. Вместо этого они начали войну за влияние в третьих странах. Так родилась эпоха прокси-конфликтов — тихая, но кровавая.</p>
+
+<p>Шли десятилетия. Африка, Азия, Латинская Америка — везде горели гражданские войны. СССР и США продавали оружие своим союзникам, обучали их солдат, отправляли советников. Конфликты становились всё более кровопролитными. Никто уже не помнил, с чего всё началось. Воевали за идеи, за ресурсы, за страх. И никто не мог победить.</p>
+
+<p>В 1990-х в СССР начались новые беспорядки. На этот раз они привели к распаду — но не полному. <b>Прибалтика и Грузия</b> вышли из состава Союза, и там сразу же вспыхнули гражданские войны. Обе стороны — и СССР, и США — продолжали продавать оружие. Война стала ещё более жестокой. Появились новые технологии: дроны, экзоскелеты, умные ракеты. Но человечество не стало ближе к миру.</p>
+
+<p>К 2000-м мир разделился на две сферы влияния: <b>Союз Мира</b> и <b>Революционный Договор</b>. Это уже не были страны — это были идеологии. Синие верили в порядок и свободу. Красные — в равенство и революцию. Обе стороны считали себя правыми. Обе были готовы убивать за свои убеждения.</p>
+
+<p>Ты родился в одной из этих стран. Ты не выбирал эту войну — она выбрала тебя. Ты стал солдатом, потому что тебе пообещали мир. Ты сражаешься, потому что тебе сказали, что твоя сторона — правильная. Но с каждым боем ты всё меньше понимаешь, кто ты. Ты уже не знаешь, за что воюешь. Ты просто выживаешь.</p>
+
+<div class="lore-final">
+И где-то в глубине души ты чувствуешь: эта война не закончится. Она будет длиться годами, десятилетиями, веками. Она поглотит всё. И однажды не останется ни Синих, ни Красных. Не останется никого. Только пепел, тишина и память о тех, кто верил в пустые обещания.
+</div>
+</div>
+</div>
+</section>
+
+<!-- MODES -->
+<section id="modes">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="tag">03 / Режимы игры</div>
+<h2 class="title">ТРИ РЕЖИМА.<br>ОДНА ВОЙНА.</h2>
+<p class="lead">Каждый ивент — это один из трёх режимов. Каждый режим требует своей тактики.</p>
+</div>
+<div class="mode-grid">
+<article class="mode-card reveal" data-num="01">
+<h3>КОМАНДНЫЙ БОЙ</h3>
+<p>Классическое сражение между Синими и Красными. Побеждает команда, которая наберёт больше очков за убийства и уничтожение техники. Никаких точек — только чистая тактика и слаженность.</p>
+<span class="mode-tag">КБ</span>
+</article>
+<article class="mode-card reveal" data-num="02">
+<h3>ЗАХВАТ ТОЧЕК</h3>
+<p>На карте расположены 5+ точек. Команды сражаются за контроль над ними. Захват точки занимает 30 секунд, перезахват — 60. Побеждает команда, контролирующая больше точек к концу ивента.</p>
+<span class="mode-tag">ЗТ</span>
+</article>
+<article class="mode-card reveal" data-num="03">
+<h3>ЛИНИЯ ФРОНТА</h3>
+<p>Динамичный режим с поэтапным захватом. Есть 2 стартовые точки у каждой команды и 1 центральная. Захват точки открывает путь к следующей. Побеждает команда, которая прорвёт линию фронта врага.</p>
+<span class="mode-tag">ЛФ</span>
+</article>
+</div>
+</div>
+</section>
+
+<!-- HOW TO START -->
+<section id="start">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="tag">04 / Как начать</div>
+<h2 class="title">ПЯТЬ ШАГОВ<br>ДО ПЕРВОГО БОЯ.</h2>
+</div>
+<div class="start-grid">
+<div class="start-step reveal">
+<div class="start-num">01</div>
+<h4>ЗАЙТИ НА СЕРВЕР</h4>
+<p>Скачай TLauncher, установи Minecraft 1.20.1 с Forge. Зайди в Telegram-канал — там IP, папка с модами и время ивента.</p>
+</div>
+<div class="start-step reveal">
+<div class="start-num">02</div>
+<h4>ЗАРЕГИСТРИРОВАТЬСЯ</h4>
+<p>В игре напиши <b>/reg пароль пароль</b>. Запомни пароль. При следующем входе — <b>/login пароль</b>.</p>
+</div>
+<div class="start-step reveal">
+<div class="start-num">03</div>
+<h4>ВЫБРАТЬ КОМАНДУ</h4>
+<p>На спавне стоит NPC. ПКМ по нему → меню выбора команды. Синие или Красные — выбор определяет твою базу.</p>
+</div>
+<div class="start-step reveal">
+<div class="start-num">04</div>
+<h4>ВЫБРАТЬ КЛАСС</h4>
+<p>На базе тоже есть NPC. ПКМ → меню классов. Бесплатные — для старта. Платные — для нового геймплея (танк, вертолёт, дроны).</p>
+</div>
+<div class="start-step reveal">
+<div class="start-num">05</div>
+<h4>В БОЙ</h4>
+<p>Захватывай точки, убивай врагов, помогай команде. Помни: смерть = потеря снаряжения. Возрождаешься на базе.</p>
+</div>
+</div>
+
+<div class="tips-list reveal">
+<div class="tip"><b>Совет 1.</b> Начни с бесплатного класса — Штурмовик или Медик. Не покупай донат сразу.</div>
+<div class="tip"><b>Совет 2.</b> Включи голосовой чат. Опытные игроки подскажут, куда идти.</div>
+<div class="tip"><b>Совет 3.</b> Не беги в бой сразу. Осмотрись, изучи карту, найди укрытия.</div>
+<div class="tip"><b>Совет 4.</b> Держись рядом с союзниками. Один в поле не воин.</div>
+<div class="tip"><b>Совет 5.</b> Попробуй разные классы в первых ивентах. Пойми, что тебе нравится.</div>
+<div class="tip"><b>Совет 6.</b> Надоел геймплей? Купи платный класс — танк, вертолёт, дроны. Каждый класс — отдельная игра.</div>
+<div class="tip"><b>Совет 7.</b> Следи за К/Д. Чем лучше — тем ценнее ты для команды.</div>
+<div class="tip"><b>Совет 8.</b> Заходи в Telegram. Там анонсы ивентов и связь с админами.</div>
+</div>
+</div>
+</section>
+
+<!-- FACTIONS -->
 <section id="factions">
 <div class="wrap">
 <div class="section-head reveal">
-<div class="tag">02 / Принять сторону</div>
+<div class="tag">05 / Принять сторону</div>
 <h2 class="title">Две идеологии.<br>Одна война.</h2>
 </div>
 <div class="faction-grid">
@@ -901,10 +818,11 @@ PROJECT ONLINE
 </div>
 </section>
 
+<!-- FEATURES -->
 <section>
 <div class="wrap">
 <div class="section-head reveal">
-<div class="tag">03 / Почему VZR</div>
+<div class="tag">06 / Почему VZR</div>
 <h2 class="title">Не тупой раш.<br>Настоящая игра.</h2>
 </div>
 <div class="features">
@@ -932,23 +850,24 @@ PROJECT ONLINE
 </div>
 </section>
 
+<!-- CLASSES -->
 <section id="classes">
 <div class="wrap">
 <div class="section-head reveal">
-<div class="tag">04 / Выбери специализацию</div>
+<div class="tag">07 / Выбери специализацию</div>
 <h2 class="title">Ты не просто<br>солдат.</h2>
-<p class="lead">Каждая роль создана для определённой задачи. Найди свой стиль боя.</p>
+<p class="lead">34 класса — от простого штурмовика до пилота истребителя. Каждый открывает свой геймплей.</p>
 </div>
 <div class="class-grid">
 <article class="class-card reveal" data-mark="01">
 <div class="class-no">01 / FREE CLASS</div>
 <h3>ВОДИТЕЛЬ</h3>
-<p>Может участвовать в бою или доставить команду туда, где она нужнее всего.</p>
+<p>Транспорт и мобильность. Может доставить команду туда, где она нужнее всего.</p>
 </article>
 <article class="class-card reveal" data-mark="02">
 <div class="class-no">02 / FREE CLASS</div>
 <h3>ШТУРМОВИК</h3>
-<p>Прикрыть союзников или самостоятельно зачистить объект.</p>
+<p>Универсальный боец. Прикрыть союзников или самостоятельно зачистить объект.</p>
 </article>
 <article class="class-card reveal" data-mark="03">
 <div class="class-no">03 / FREE CLASS</div>
@@ -956,28 +875,29 @@ PROJECT ONLINE
 <p>Дым, светошумовые гранаты и помощь команде в самых напряжённых моментах.</p>
 </article>
 <article class="class-card reveal" data-mark="04">
-<div class="class-no">04 / SPECIAL CLASS</div>
+<div class="class-no">04 / PAID CLASS</div>
 <h3>ИНЖЕНЕР</h3>
-<p>Специализированная роль для тех, кто предпочитает побеждать умом и подготовкой.</p>
+<p>Мины, ловушки, укрепления. Побеждает умом и подготовкой.</p>
 </article>
 <article class="class-card reveal" data-mark="05">
-<div class="class-no">05 / SPECIAL CLASS</div>
+<div class="class-no">05 / PAID CLASS</div>
 <h3>ПИЛОТ</h3>
-<p>Контроль воздушного пространства и поддержка команды с совершенно другого уровня.</p>
+<p>Контроль воздушного пространства и поддержка команды с высоты.</p>
 </article>
 <article class="class-card reveal" data-mark="06">
-<div class="class-no">06 / SPECIAL CLASS</div>
+<div class="class-no">06 / PAID CLASS</div>
 <h3>ТАНКИСТ</h3>
-<p>Тяжёлая техника, огневая мощь и способность изменить ситуацию одним ударом.</p>
+<p>Тяжёлая техника, огневая мощь и способность изменить бой одним ударом.</p>
 </article>
 </div>
 </div>
 </section>
 
+<!-- TIMELINE -->
 <section>
 <div class="wrap">
 <div class="section-head reveal">
-<div class="tag">05 / Путь бойца</div>
+<div class="tag">08 / Путь бойца</div>
 <h2 class="title">Твоя история<br>начинается здесь.</h2>
 </div>
 <div class="timeline">
@@ -1000,6 +920,7 @@ PROJECT ONLINE
 </div>
 </section>
 
+<!-- QUOTE -->
 <section class="quote">
 <div class="wrap reveal">
 <div class="tag">Главный принцип Victory Zone Raiders</div>
@@ -1007,6 +928,76 @@ PROJECT ONLINE
 </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="tag">09 / Что делать, если...</div>
+<h2 class="title">ЧАСТЫЕ СИТУАЦИИ</h2>
+<p class="lead">Короткие ответы на частые вопросы новичков и не только.</p>
+</div>
+<div class="faq-grid">
+<div class="faq-card reveal">
+<div class="faq-icon">💳</div>
+<div>
+<b>Не пришёл донат</b>
+<p>Обратись в поддержку (<a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>) и приложи чек из магазина. Срок выдачи — до 2 дней.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">⚖️</div>
+<div>
+<b>Забанили несправедливо</b>
+<p>Подай апелляцию в поддержку в течение 7 дней. Проверку проведёт другой админ, не тот, кто наказал.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">🖥️</div>
+<div>
+<b>Не работает сервер</b>
+<p>Сервер ивентовый и работает не 24/7. Проверь анонсы в Telegram-канале проекта — там время запуска.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">🎙️</div>
+<div>
+<b>Не знаешь, что делать</b>
+<p>Включи голосовой чат и спроси союзников. Опытные игроки всегда подскажут, куда идти и что делать.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">💰</div>
+<div>
+<b>Не хватает GOC</b>
+<p>Заработай на ивентах (победа — 10 GOC, MVP — 7, участие — 4) или купи в магазине. Курс: 1 GOC = 1 ₽.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">🎮</div>
+<div>
+<b>Хочешь новый геймплей</b>
+<p>Купи платный класс в магазине. Танкист, лётчик, джаггернаут, оператор дронов — каждый класс это отдельная игра.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">📖</div>
+<div>
+<b>Не понимаешь режим</b>
+<p>Прочитай описание режимов выше. КБ — бой, ЗТ — захват точек, ЛФ — линия фронта.</p>
+</div>
+</div>
+<div class="faq-card reveal">
+<div class="faq-icon">🛒</div>
+<div>
+<b>Проблемы с оплатой</b>
+<p>Напиши в поддержку (<a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>) или в Max-канал. Поможем разобраться с платежом.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- JOIN -->
 <section id="join">
 <div class="wrap">
 <div class="join-panel reveal">
@@ -1061,6 +1052,16 @@ PROJECT ONLINE
 </div>
 </section>
 
+<!-- SPARKS -->
+<section class="sparks">
+<div class="wrap reveal">
+<div class="tag">Война не закончится. Но ты можешь стать легендой.</div>
+<h2 style="font-family:'Russo One';font-size:clamp(30px,5vw,64px);line-height:1;margin-top:20px;text-transform:uppercase;letter-spacing:-.03em;">
+VICTORY ZONE <em style="color:var(--gold);font-style:normal;">RAIDERS</em>
+</h2>
+</div>
+</section>
+
 </main>
 
 <footer>
@@ -1071,6 +1072,57 @@ PROJECT ONLINE
 </footer>
 
 <script>
+/* =========================
+   ЧАСТИЦЫ ЛИСТЬЕВ
+========================= */
+const particlesContainer = document.getElementById('particles');
+const leafSymbols = ['🍁', '🍂', '🍃'];
+const leafColors = ['#c97b3a', '#e0a35a', '#a8642a', '#d4803a'];
+
+function createLeaf() {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.textContent = leafSymbols[Math.floor(Math.random() * leafSymbols.length)];
+    leaf.style.left = Math.random() * 100 + '%';
+    leaf.style.fontSize = (14 + Math.random() * 12) + 'px';
+    leaf.style.animationDuration = (8 + Math.random() * 8) + 's';
+    leaf.style.animationDelay = (Math.random() * 8) + 's';
+    leaf.style.opacity = 0.3 + Math.random() * 0.4;
+    particlesContainer.appendChild(leaf);
+
+    setTimeout(() => {
+        leaf.remove();
+    }, 20000);
+}
+
+// Создаём листья
+for (let i = 0; i < 25; i++) {
+    setTimeout(createLeaf, i * 500);
+}
+setInterval(createLeaf, 800);
+
+/* =========================
+   ИСКРЫ В КОНЦЕ
+========================= */
+function createSpark() {
+    const sparksSection = document.querySelector('.sparks');
+    if (!sparksSection) return;
+
+    const spark = document.createElement('div');
+    spark.className = 'spark';
+    spark.style.left = Math.random() * 100 + '%';
+    spark.style.animationDuration = (3 + Math.random() * 3) + 's';
+    spark.style.animationDelay = (Math.random() * 2) + 's';
+    sparksSection.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 8000);
+}
+
+setInterval(createSpark, 300);
+
+/* =========================
+   REVEAL АНИМАЦИЯ
+========================= */
 const observer = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -1084,6 +1136,9 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
+/* =========================
+   ПЛАВНЫЙ СКРОЛЛ
+========================= */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", e => {
         const id = a.getAttribute("href");
