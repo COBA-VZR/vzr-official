@@ -125,7 +125,7 @@ nav { min-height: 86px; display: flex; align-items: center; justify-content: spa
     padding: 17px 23px; border: 1px solid var(--line);
     font-size: 11px; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase;
     background: rgba(8,10,12,.55); backdrop-filter: blur(12px);
-    transition: .25s; cursor: pointer;
+    transition: .25s; cursor: pointer; position: relative; z-index: 10;
 }
 .button:hover { transform: translateY(-3px); border-color: var(--gold); }
 .button.gold { background: var(--gold); border-color: var(--gold); color: #17130d; }
@@ -178,7 +178,7 @@ section { position: relative; padding: 120px 0; border-top: 1px solid var(--line
 .faq-icon { font-size: 24px; flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); background: rgba(241,189,97,.05); }
 .faq-card b { display: block; color: var(--gold); font-size: 14px; margin-bottom: 6px; font-family: "Russo One"; letter-spacing: .5px; }
 .faq-card p { color: #b7bec7; font-size: 13px; line-height: 1.65; }
-.faq-card p a { color: var(--gold); }
+.faq-card p a { color: var(--gold); position: relative; z-index: 10; }
 .faq-card p a:hover { text-decoration: underline; }
 
 /* HOW TO START */
@@ -238,14 +238,55 @@ section { position: relative; padding: 120px 0; border-top: 1px solid var(--line
 
 /* JOIN */
 .join-panel { position: relative; padding: 70px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(110deg, #151a20, #08090b); }
-.join-panel::after { content: "VZR"; position: absolute; right: -25px; bottom: -70px; font-family: "Russo One"; font-size: 260px; opacity: .025; }
+.join-panel::after { content: "VZR"; position: absolute; right: -25px; bottom: -70px; font-family: "Russo One"; font-size: 260px; opacity: .025; pointer-events: none; }
 .join-panel h2 { position: relative; font-size: clamp(40px,7vw,82px); line-height: .95; margin: 16px 0 30px; letter-spacing: -.05em; }
 .join-panel p { position: relative; max-width: 680px; color: var(--muted); line-height: 1.7; }
 
-.social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; position: relative; }
-.social-card { display: flex; align-items: center; gap: 16px; padding: 22px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(15px); transition: .3s; cursor: pointer; }
-.social-card:hover { border-color: rgba(241,189,97,.4); transform: translateY(-4px); }
-.social-icon { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex-shrink: 0; font-size: 20px; font-weight: 800; font-family: "Russo One"; pointer-events: none; }
+/* СОЦИАЛЬНЫЕ КАРТОЧКИ — ИСПРАВЛЕНО */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 5;
+}
+.social-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(15px);
+    transition: .3s;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: rgba(241,189,97,.2);
+    text-decoration: none;
+    color: inherit;
+}
+.social-card:hover {
+    border-color: rgba(241,189,97,.4);
+    transform: translateY(-4px);
+}
+.social-card * {
+    pointer-events: none;
+}
+.social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: "Russo One";
+    pointer-events: none;
+}
 .social-icon.tg { background: #2AABEE; color: #fff; }
 .social-icon.max { background: #3B82F6; color: #fff; }
 .social-icon.yt { background: #FF0000; color: #fff; }
@@ -284,16 +325,6 @@ footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid
     }
     .mobile-links a { flex-shrink: 0; }
 
-    /* ИСПРАВЛЕНИЕ: кнопки соцсетей работают на телефоне */
-    .social-card {
-        position: relative;
-        z-index: 20;
-        pointer-events: auto;
-    }
-    .social-card * {
-        pointer-events: none;
-    }
-
     .about-grid, .faction-grid { grid-template-columns: 1fr; }
     .features { grid-template-columns: repeat(2,1fr); }
     .class-grid { grid-template-columns: 1fr 1fr; }
@@ -303,6 +334,17 @@ footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid
     .faq-grid { grid-template-columns: 1fr; }
     .start-grid { grid-template-columns: repeat(2,1fr); }
     .tips-list { grid-template-columns: 1fr; }
+
+    /* Мобильные карточки */
+    .social-card {
+        position: relative;
+        z-index: 20;
+        pointer-events: auto;
+        width: 100%;
+    }
+    .social-card * {
+        pointer-events: none;
+    }
 }
 
 @media(max-width:600px) {
@@ -388,7 +430,7 @@ PROJECT ONLINE
 </p>
 <div class="hero-actions">
 <a class="button gold" href="#factions">Выбрать сторону →</a>
-<a class="button" href="https://youtube.com/@sova_vzr?si=CIKmd34FsfxS86E" target="_blank">▶ Смотреть YouTube</a>
+<a class="button" href="https://youtube.com/@sova_vzr?si=CIKmd34FsfxS86E" target="_blank" rel="noopener">▶ Смотреть YouTube</a>
 </div>
 </div>
 <div class="hero-bottom">
@@ -672,7 +714,7 @@ PROJECT ONLINE
 <div class="faq-icon">💳</div>
 <div>
 <b>Не пришёл донат</b>
-<p>Обратись в поддержку (<a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>) и приложи чек из магазина. Срок выдачи — до 2 дней.</p>
+<p>Обратись в поддержку (<a href="https://t.me/VZRrep" target="_blank" rel="noopener">@VZRrep</a>) и приложи чек из магазина. Срок выдачи — до 2 дней.</p>
 </div>
 </div>
 <div class="faq-card reveal">
@@ -721,7 +763,7 @@ PROJECT ONLINE
 <div class="faq-icon">🛒</div>
 <div>
 <b>Проблемы с оплатой</b>
-<p>Напиши в поддержку (<a href="https://t.me/VZRrep" target="_blank">@VZRrep</a>) или в Max-канал. Поможем разобраться с платежом.</p>
+<p>Напиши в поддержку (<a href="https://t.me/VZRrep" target="_blank" rel="noopener">@VZRrep</a>) или в Max-канал. Поможем разобраться с платежом.</p>
 </div>
 </div>
 </div>
@@ -860,4 +902,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 </body>
-    </html>
+</html>
