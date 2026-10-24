@@ -154,7 +154,7 @@
             max-width: 650px;
             border: 1px solid var(--line);
             background: var(--panel);
-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
             padding: 50px;
             text-align: center;
             position: relative;
@@ -311,7 +311,8 @@ backdrop-filter: blur(15px);
             transition: .3s;
             cursor: pointer;
         }
-.support-btn:hover {
+
+        .support-btn:hover {
             background: rgba(42,171,238,.2);
             border-color: #2AABEE;
             transform: translateY(-2px);
@@ -352,6 +353,36 @@ backdrop-filter: blur(15px);
             width: 18px;
             height: 18px;
             fill: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .mydonate-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 28px;
+            border: 1px solid #ff4c4c;
+            background: rgba(255,76,76,.1);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .mydonate-btn:hover {
+            background: rgba(255,76,76,.2);
+            border-color: #ff4c4c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,76,76,.15);
+        }
+
+        .mydonate-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #ff4c4c;
             flex-shrink: 0;
         }
 
@@ -397,7 +428,8 @@ backdrop-filter: blur(15px);
                 flex-direction: column;
             }
             .support-btn,
-            .shop-btn {
+            .shop-btn,
+            .mydonate-btn {
                 width: 100%;
                 justify-content: center;
             }
@@ -449,18 +481,28 @@ backdrop-filter: blur(15px);
                     <p>
                         Если по истечении указанного срока вы не получили продукт,
                         обратитесь в поддержку для запроса продукта или возврата средств.
-Для этого потребуется <b>чек об оплате</b> из магазина.
+                        Для этого потребуется <b>чек об оплате</b> из магазина.
                     </p>
                 </div>
 
                 <div class="actions">
+                    <!-- Кнопка техподдержки проекта -->
                     <a class="support-btn" href="https://t.me/VZRrep" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.15-.04-.22-.02-.09.02-1.61 1.02-4.55 3.01-.43.3-.82.44-1.17.43-.39-.01-1.13-.22-1.68-.4-.68-.22-1.22-.34-1.17-.71.02-.2.3-.4.82-.61 3.22-1.4 5.37-2.32 6.45-2.77 3.07-1.28 3.71-1.5 4.13-1.51.09 0 .29.02.42.12.11.08.14.19.16.27.01.08.03.25.02.39z"/>
                         </svg>
-                        Поддержка в Telegram
+                        Поддержка проекта
                     </a>
 
+                    <!-- Кнопка техподдержки MyDonate -->
+                    <a class="mydonate-btn" href="https://t.me/mydonate_support" target="_blank">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                        Поддержка Mydonate (по вопросам возврата) 
+                    </a>
+
+                    <!-- Кнопка магазина -->
                     <a class="shop-btn" href="https://vzrshop.mydonate.io" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
