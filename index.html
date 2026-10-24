@@ -313,6 +313,89 @@ footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.show { opacity: 1; transform: none; }
 
+/* БАННЕР СОГЛАСИЯ */
+.cookie-banner {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: rgba(13, 16, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+    z-index: 9999;
+    transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+}
+.cookie-banner.show {
+    bottom: 0;
+}
+.cookie-content {
+    width: min(1220px, calc(100% - 40px));
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cookie-text {
+    color: #b7bdc5;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 800px;
+}
+.cookie-text a {
+    color: var(--gold);
+    text-decoration: underline;
+    transition: .2s;
+}
+.cookie-text a:hover {
+    color: #fff;
+}
+.cookie-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.cookie-btn {
+    padding: 12px 24px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: #fff;
+    transition: .2s;
+}
+.cookie-btn.gold {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #17130d;
+}
+.cookie-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(241,189,97,0.2);
+}
+.cookie-btn.gold:hover {
+    background: #f1bd61;
+}
+@media(max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cookie-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    .cookie-btn {
+        width: 100%;
+    }
+}
+
 /* АДАПТИВ */
 @media(max-width:900px) {
     .links-top { display: flex; gap: 12px; font-size: 11px; }
@@ -370,6 +453,23 @@ footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid
 <body>
 
 <div id="particles"></div>
+
+<!-- БАННЕР СОГЛАСИЯ -->
+<div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+        <div class="cookie-text">
+            Мы используем файлы cookie для корректной работы сайта и аналитики. 
+            Продолжая использовать сайт, вы соглашаетесь с нашей 
+            <a href="privacy.html">Политикой конфиденциальности</a> и 
+            <a href="rules.html">Пользовательским соглашением</a>, 
+            а также даёте согласие на обработку персональных данных согласно ФЗ-152.
+        </div>
+        <div class="cookie-actions">
+            <button id="cookie-accept" class="cookie-btn gold">Согласен</button>
+            <button id="cookie-decline" class="cookie-btn">Отклонить</button>
+        </div>
+    </div>
+</div>
 
 <div class="topbar">
 <div class="wrap">
@@ -898,6 +998,37 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
             e.preventDefault();
             target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
+    });
+});
+
+/* ЛОГИКА БАННЕРА СОГЛАСИЯ */
+document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const declineBtn = document.getElementById('cookie-decline');
+
+    // Проверяем, давал ли уже пользователь ответ
+    const cookieStatus = localStorage.getItem('vzr_cookie_consent');
+
+    if (!cookieStatus) {
+        // Если нет — показываем баннер через 1.5 секунды (чтобы сайт успел загрузиться)
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 1500);
+    }
+
+    // Кнопка "Согласен"
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('vzr_cookie_consent', 'accepted');
+        banner.classList.remove('show');
+        // Здесь можно добавить код инициализации аналитики (Яндекс.Метрика, Google Analytics)
+    });
+
+    // Кнопка "Отклонить"
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('vzr_cookie_consent', 'declined');
+        banner.classList.remove('show');
+        // Если пользователь отклонил, мы просто не грузим тяжелые скрипты аналитики
     });
 });
 </script>
