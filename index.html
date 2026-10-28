@@ -50,13 +50,21 @@ a { text-decoration: none; color: inherit; }
 .wrap { width: min(1220px, calc(100% - 40px)); margin: auto; }
 h1, h2, h3, h4 { font-family: "Russo One", sans-serif; font-weight: 400; }
 
-/* ЧАСТИЦЫ */
+/* ЧАСТИЦЫ (СНЕГ) */
 #particles { position: fixed; inset: 0; pointer-events: none; z-index: 5; overflow: hidden; }
-.leaf { position: absolute; top: -60px; font-size: 18px; opacity: .55; animation: fall linear infinite; filter: drop-shadow(0 0 4px rgba(241,189,97,.2)); }
+.snowflake { 
+    position: absolute; 
+    top: -60px; 
+    color: #fff; 
+    opacity: .7; 
+    animation: fall linear infinite; 
+    text-shadow: 0 0 5px rgba(255,255,255,.5);
+    font-family: Arial, sans-serif;
+}
 @keyframes fall {
     0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
-    10% { opacity: .7; }
-    50% { transform: translateY(50vh) rotate(180deg) translateX(30px); }
+    10% { opacity: .8; }
+    50% { transform: translateY(50vh) rotate(180deg) translateX(20px); }
     100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); opacity: 0; }
 }
 
@@ -64,7 +72,15 @@ h1, h2, h3, h4 { font-family: "Russo One", sans-serif; font-weight: 400; }
 .topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 10; }
 nav { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; padding: 10px 0; }
 .logo { display: flex; align-items: center; gap: 13px; font-family: "Russo One"; letter-spacing: 1px; text-transform: uppercase; font-size: 15px; }
-.logo-badge { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(241,189,97,.8); color: var(--gold); }
+
+/* ЗАМЕНА КВАДРАТИКА VZR НА КАРТИНКУ */
+.logo-img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border: 1px solid rgba(241,189,97,.8); /* Оставляем золотую рамку как было */
+    padding: 2px; /* Небольшой отступ, чтобы картинка не прилипала к рамке */
+}
 
 .links-top { display: flex; align-items: center; gap: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #c4c9cf; flex-wrap: wrap; }
 .links-top a { transition: .2s; }
@@ -242,7 +258,7 @@ section { position: relative; padding: 120px 0; border-top: 1px solid var(--line
 .join-panel h2 { position: relative; font-size: clamp(40px,7vw,82px); line-height: .95; margin: 16px 0 30px; letter-spacing: -.05em; }
 .join-panel p { position: relative; max-width: 680px; color: var(--muted); line-height: 1.7; }
 
-/* СОЦИАЛЬНЫЕ КАРТОЧКИ — ИСПРАВЛЕНО */
+/* СОЦИАЛЬНЫЕ КАРТОЧКИ */
 .social-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -418,7 +434,6 @@ footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid
     .start-grid { grid-template-columns: repeat(2,1fr); }
     .tips-list { grid-template-columns: 1fr; }
 
-    /* Мобильные карточки */
     .social-card {
         position: relative;
         z-index: 20;
@@ -474,9 +489,10 @@ footer { padding: 38px 0; color: #747c86; font-size: 11px; border-top: 1px solid
 <div class="topbar">
 <div class="wrap">
 <nav>
+<!-- НОВЫЙ ЛОГОТИП -->
 <a class="logo" href="#">
-<span class="logo-badge">VZR</span>
-<span>Victory Zone Raiders</span>
+    <img src="logo-vzr.png" alt="VZR" class="logo-img">
+    <span>Victory Zone Raiders</span>
 </a>
 
 <div class="links-top">
@@ -943,25 +959,25 @@ VICTORY ZONE <em style="color:var(--gold);font-style:normal;">RAIDERS</em>
 </footer>
 
 <script>
-/* ЧАСТИЦЫ ЛИСТЬЕВ */
+/* ЧАСТИЦЫ СНЕГА */
 const particlesContainer = document.getElementById('particles');
-const leafSymbols = ['🍁', '🍂', '🍃'];
+const snowSymbols = ['❄', '❅', '❆']; // Символы снежинок
 
-function createLeaf() {
-    const leaf = document.createElement('div');
-    leaf.className = 'leaf';
-    leaf.textContent = leafSymbols[Math.floor(Math.random() * leafSymbols.length)];
-    leaf.style.left = Math.random() * 100 + '%';
-    leaf.style.fontSize = (14 + Math.random() * 12) + 'px';
-    leaf.style.animationDuration = (8 + Math.random() * 8) + 's';
-    leaf.style.animationDelay = (Math.random() * 8) + 's';
-    leaf.style.opacity = 0.3 + Math.random() * 0.4;
-    particlesContainer.appendChild(leaf);
-    setTimeout(() => leaf.remove(), 20000);
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.textContent = snowSymbols[Math.floor(Math.random() * snowSymbols.length)];
+    snowflake.style.left = Math.random() * 100 + '%';
+    snowflake.style.fontSize = (10 + Math.random() * 10) + 'px'; // Размер снежинки
+    snowflake.style.animationDuration = (10 + Math.random() * 10) + 's'; // Скорость падения
+    snowflake.style.animationDelay = (Math.random() * 10) + 's'; // Задержка
+    snowflake.style.opacity = 0.3 + Math.random() * 0.5; // Прозрачность
+    particlesContainer.appendChild(snowflake);
+    setTimeout(() => snowflake.remove(), 25000);
 }
 
-for (let i = 0; i < 25; i++) { setTimeout(createLeaf, i * 500); }
-setInterval(createLeaf, 800);
+for (let i = 0; i < 30; i++) { setTimeout(createSnowflake, i * 500); }
+setInterval(createSnowflake, 600);
 
 /* ИСКРЫ */
 function createSpark() {
@@ -1007,30 +1023,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const acceptBtn = document.getElementById('cookie-accept');
     const declineBtn = document.getElementById('cookie-decline');
 
-    // Проверяем, давал ли уже пользователь ответ
     const cookieStatus = localStorage.getItem('vzr_cookie_consent');
 
     if (!cookieStatus) {
-        // Если нет — показываем баннер через 1.5 секунды (чтобы сайт успел загрузиться)
         setTimeout(() => {
             banner.classList.add('show');
         }, 1500);
     }
 
-    // Кнопка "Согласен"
     acceptBtn.addEventListener('click', () => {
         localStorage.setItem('vzr_cookie_consent', 'accepted');
         banner.classList.remove('show');
-        // Здесь можно добавить код инициализации аналитики (Яндекс.Метрика, Google Analytics)
     });
 
-    // Кнопка "Отклонить"
     declineBtn.addEventListener('click', () => {
         localStorage.setItem('vzr_cookie_consent', 'declined');
         banner.classList.remove('show');
-        // Если пользователь отклонил, мы просто не грузим тяжелые скрипты аналитики
     });
 });
 </script>
 </body>
-</html>
+    </html> 
